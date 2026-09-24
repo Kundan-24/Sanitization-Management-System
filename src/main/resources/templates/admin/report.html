@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{admin/admin-layout :: adminLayout(~{::section},~{::title})}">
+
+    <head>
+        <title>Sanitization Report</title>
+    </head>
+
+    <body>
+
+    <section>
+        <div class="p-4 sm:p-6 lg:p-8">
+            <!-- HEADER -->
+            <div class="flex flex-col sm:flex-row
+                    sm:items-center sm:justify-between
+                    gap-4 mb-6">
+
+            <div>
+                <h1 class="text-2xl sm:text-3xl
+                           font-bold
+                           text-gray-900
+                           dark:text-white">
+                    Sanitization Report
+                </h1>
+
+                <p class="mt-1 text-sm
+                          text-gray-500
+                          dark:text-gray-400">
+                    Complete service request, customer and payment report.
+                </p>
+            </div>
+
+            <div class="flex items-center gap-2">
+
+                <!-- EXPORT PDF -->
+                <button id="exportPdfBtn"
+                        type="button"
+                        class="inline-flex items-center
+                               justify-center
+                               gap-2
+                               px-4 py-2.5
+                               rounded-xl
+                               bg-red-600
+                               hover:bg-red-700
+                               text-white
+                               text-sm font-medium
+                               transition">
+
+                    <i class="fa-solid fa-file-pdf"></i>
+                    <span>Export PDF</span>
+
+                </button>
+
+                <!-- REFRESH -->
+                <button id="refreshRequestsBtn"
+                        type="button"
+                        class="inline-flex items-center
+                               justify-center
+                               gap-2
+                               px-4 py-2.5
+                               rounded-xl
+                               bg-blue-600
+                               hover:bg-blue-700
+                               text-white
+                               text-sm font-medium
+                               transition">
+
+                    <i class="fa-solid fa-rotate-right"></i>
+                    <span>Refresh</span>
+
+                </button>
+
+            </div>
+        </div>
+
+
+        <!-- SUMMARY CARDS -->
+        <div class="grid grid-cols-2
+                    lg:grid-cols-4
+                    gap-4 mb-6">
+
+            <!-- TOTAL -->
+            <div class="bg-white dark:bg-gray-800
+                        border border-gray-200
+                        dark:border-gray-700
+                        rounded-xl
+                        p-4">
+
+                <div class="flex items-center
+                            justify-between">
+
+                    <div>
+                        <p class="text-xs font-medium
+                                  uppercase
+                                  text-gray-500
+                                  dark:text-gray-400">
+                            Total Requests
+                        </p>
+
+                        <p id="totalRequests"
+                           class="mt-2 text-2xl
+                                  font-bold
+                                  text-gray-900
+                                  dark:text-white">
+                            0
+                        </p>
+                    </div>
+
+                    <div class="w-10 h-10
+                                rounded-lg
+                                bg-blue-100
+                                dark:bg-blue-900/30
+                                text-blue-600
+                                dark:text-blue-400
+                                flex items-center
+                                justify-center">
+
+                        <i class="fa-solid fa-list-check"></i>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- PENDING -->
+            <div class="bg-white dark:bg-gray-800
+                        border border-gray-200
+                        dark:border-gray-700
+                        rounded-xl
+                        p-4">
+
+                <div class="flex items-center
+                            justify-between">
+
+                    <div>
+                        <p class="text-xs font-medium
+                                  uppercase
+                                  text-gray-500
+                                  dark:text-gray-400">
+                            Pending
+                        </p>
+
+                        <p id="pendingRequests"
+                           class="mt-2 text-2xl
+                                  font-bold
+                                  text-yellow-600
+                                  dark:text-yellow-400">
+                            0
+                        </p>
+                    </div>
+
+                    <div class="w-10 h-10
+                                rounded-lg
+                                bg-yellow-100
+                                dark:bg-yellow-900/30
+                                text-yellow-600
+                                dark:text-yellow-400
+                                flex items-center
+                                justify-center">
+
+                        <i class="fa-solid fa-clock"></i>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- IN PROGRESS -->
+            <div class="bg-white dark:bg-gray-800
+                        border border-gray-200
+                        dark:border-gray-700
+                        rounded-xl
+                        p-4">
+
+                <div class="flex items-center
+                            justify-between">
+
+                    <div>
+                        <p class="text-xs font-medium
+                                  uppercase
+                                  text-gray-500
+                                  dark:text-gray-400">
+                            In Progress
+                        </p>
+
+                        <p id="progressRequests"
+                           class="mt-2 text-2xl
+                                  font-bold
+                                  text-purple-600
+                                  dark:text-purple-400">
+                            0
+                        </p>
+                    </div>
+
+                    <div class="w-10 h-10
+                                rounded-lg
+                                bg-purple-100
+                                dark:bg-purple-900/30
+                                text-purple-600
+                                dark:text-purple-400
+                                flex items-center
+                                justify-center">
+
+                        <i class="fa-solid fa-spinner"></i>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- COMPLETED -->
+            <div class="bg-white dark:bg-gray-800
+                        border border-gray-200
+                        dark:border-gray-700
+                        rounded-xl
+                        p-4">
+
+                <div class="flex items-center
+                            justify-between">
+
+                    <div>
+                        <p class="text-xs font-medium
+                                  uppercase
+                                  text-gray-500
+                                  dark:text-gray-400">
+                            Completed
+                        </p>
+
+                        <p id="completedRequests"
+                           class="mt-2 text-2xl
+                                  font-bold
+                                  text-green-600
+                                  dark:text-green-400">
+                            0
+                        </p>
+                    </div>
+
+                    <div class="w-10 h-10
+                                rounded-lg
+                                bg-green-100
+                                dark:bg-green-900/30
+                                text-green-600
+                                dark:text-green-400
+                                flex items-center
+                                justify-center">
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <!--  LIVE FILTER -->
+        <div class="bg-white dark:bg-gray-800
+                    border border-gray-200
+                    dark:border-gray-700
+                    rounded-xl
+                    p-4 mb-6">
+
+            <div class="grid grid-cols-1
+                        sm:grid-cols-2
+                        lg:grid-cols-4
+                        gap-4">
+
+                <!-- SEARCH -->
+                <div>
+
+                    <label for="requestSearch"
+                           class="block mb-2
+                                  text-sm font-medium
+                                  text-gray-700
+                                  dark:text-gray-300">
+
+                        Search
+
+                    </label>
+
+                    <div class="relative">
+
+                        <i class="fa-solid
+                                  fa-magnifying-glass
+                                  absolute
+                                  left-3 top-3.5
+                                  text-gray-400">
+                        </i>
+
+                        <input id="requestSearch"
+                               type="search"
+                               placeholder="Tracking ID, name, mobile..."
+                               autocomplete="off"
+                               class="w-full
+                                      pl-10 pr-3 py-2.5
+                                      rounded-lg
+                                      border border-gray-300
+                                      dark:border-gray-600
+                                      bg-gray-50
+                                      dark:bg-gray-700
+                                      text-gray-900
+                                      dark:text-white
+                                      placeholder-gray-400
+                                      focus:ring-2
+                                      focus:ring-blue-500
+                                      outline-none">
+
+                    </div>
+
+                    <p class="mt-1 text-xs
+                              text-gray-400
+                              dark:text-gray-500">
+                        Results update automatically
+                    </p>
+
+                </div>
+
+
+                <!-- DATE -->
+                <div>
+
+                    <label for="requestDate"
+                           class="block mb-2
+                                  text-sm font-medium
+                                  text-gray-700
+                                  dark:text-gray-300">
+
+                        Date
+
+                    </label>
+
+                    <input id="requestDate"
+                           type="date"
+                           class="w-full
+                                  px-3 py-2.5
+                                  rounded-lg
+                                  border border-gray-300
+                                  dark:border-gray-600
+                                  bg-gray-50
+                                  dark:bg-gray-700
+                                  text-gray-900
+                                  dark:text-white
+                                  focus:ring-2
+                                  focus:ring-blue-500
+                                  outline-none">
+
+                </div>
+
+
+                <!-- STATUS -->
+                <div>
+
+                    <label for="statusFilter"
+                           class="block mb-2
+                                  text-sm font-medium
+                                  text-gray-700
+                                  dark:text-gray-300">
+
+                        Request Status
+
+                    </label>
+
+                    <select id="statusFilter"
+                            class="w-full
+                                   px-3 py-2.5
+                                   rounded-lg
+                                   border border-gray-300
+                                   dark:border-gray-600
+                                   bg-gray-50
+                                   dark:bg-gray-700
+                                   text-gray-900
+                                   dark:text-white
+                                   focus:ring-2
+                                   focus:ring-blue-500
+                                   outline-none">
+
+                        <option value="">All Status</option>
+                        <option value="PENDING">Pending</option>
+                        <option value="CONFIRMED">Confirmed</option>
+                        <option value="IN_PROGRESS">In Progress</option>
+                        <option value="COMPLETED">Completed</option>
+                        <option value="CANCELLED">Cancelled</option>
+                    </select>
+                </div>
+
+                <!-- LIVE FILTER INFO -->
+                <div class="flex items-end">
+
+                    <div class="w-full
+                                rounded-lg
+                                bg-blue-50
+                                dark:bg-blue-900/20
+                                border border-blue-100
+                                dark:border-blue-800
+                                px-4 py-3">
+
+                        <div class="flex items-center
+                                    gap-2
+                                    text-blue-700
+                                    dark:text-blue-300">
+
+                            <i class="fa-solid
+                                      fa-bolt">
+                            </i>
+
+                            <span class="text-sm font-medium">
+                                Filters update automatically
+                            </span>
+
+                        </div>
+
+                        <p class="mt-1 text-xs
+                                  text-blue-600
+                                  dark:text-blue-400">
+                            PDF export uses the current filters.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RESET ONLY -->
+            <div class="flex justify-end mt-4">
+
+                <button id="resetFilterBtn"
+                        type="button"
+                        class="inline-flex
+                               items-center
+                               gap-2
+                               px-4 py-2.5
+                               rounded-lg
+                               border border-gray-300
+                               dark:border-gray-600
+                               text-gray-700
+                               dark:text-gray-200
+                               hover:bg-gray-100
+                               dark:hover:bg-gray-700
+                               text-sm font-medium
+                               transition">
+
+                    <i class="fa-solid fa-rotate-left"></i>
+
+                    Reset Filters
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!--  REPORT TABLE -->
+        <div class="bg-white dark:bg-gray-800
+                    border border-gray-200
+                    dark:border-gray-700
+                    rounded-xl
+                    overflow-hidden">
+
+            <!-- TABLE HEADER -->
+            <div class="flex flex-col
+                        sm:flex-row
+                        sm:items-center
+                        sm:justify-between
+                        gap-3
+                        px-5 py-4
+                        border-b
+                        border-gray-200
+                        dark:border-gray-700">
+
+                <div>
+
+                    <h2 class="font-semibold
+                               text-gray-900
+                               dark:text-white">
+
+                        Service Requests
+
+                    </h2>
+
+                    <p id="requestCountText"
+                       class="text-xs mt-1
+                              text-gray-500
+                              dark:text-gray-400">
+
+                        Loading...
+
+                    </p>
+
+                </div>
+
+                <div class="flex items-center gap-2">
+
+                    <span class="inline-flex
+                                 items-center
+                                 gap-1.5
+                                 text-xs
+                                 text-gray-500
+                                 dark:text-gray-400">
+
+                        <i class="fa-solid
+                                  fa-shield-halved">
+                        </i>
+
+                        Admin Report
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!--  LOADING -->
+
+            <div id="loadingState"
+                 class="hidden
+                        py-14
+                        text-center">
+
+                <i class="fa-solid
+                          fa-spinner
+                          fa-spin
+                          text-2xl
+                          text-blue-600">
+                </i>
+
+                <p class="mt-3
+                          text-sm
+                          text-gray-500
+                          dark:text-gray-400">
+
+                    Loading report...
+
+                </p>
+
+            </div>
+
+
+            <!--  EMPTY -->
+            <div id="emptyState"
+                 class="hidden
+                        py-14
+                        text-center">
+
+                <i class="fa-solid
+                          fa-inbox
+                          text-3xl
+                          text-gray-400">
+                </i>
+
+                <p class="mt-3
+                          font-medium
+                          text-gray-700
+                          dark:text-gray-200">
+
+                    No requests found
+
+                </p>
+
+                <p class="mt-1
+                          text-sm
+                          text-gray-500
+                          dark:text-gray-400">
+
+                    Try changing the filters.
+
+                </p>
+
+            </div>
+
+
+            <!--  TABLE -->
+            <div id="tableContainer"
+                 class="overflow-x-auto">
+
+                <table class="w-full
+                              min-w-[1200px]
+                              text-sm
+                              text-left">
+
+                    <thead class="bg-gray-50 dark:bg-gray-700">
+                    <tr class="text-xs uppercase text-gray-500 dark:text-gray-300">
+                        <th class="px-5 py-3">#</th>
+                        <th class="px-5 py-3">Tracking ID</th>
+                        <th class="px-5 py-3">Customer</th>
+                        <th class="px-5 py-3">Service</th>
+                        <th class="px-5 py-3">Date</th>
+                        <th class="px-5 py-3">Time</th>
+                        <th class="px-5 py-3">Request Status</th>
+                        <th class="px-5 py-3">Payment</th>
+                        <th class="px-5 py-3 text-center">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody id="requestsTableBody" class="divide-y divide-gray-200 dark:divide-gray-700"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!--  FULL REQUEST DETAILS MODAL -->
+    <div id="requestViewModal"
+         class="hidden
+                fixed inset-0
+                z-50
+                items-center
+                justify-center
+                bg-black/60
+                backdrop-blur-sm
+                p-4">
+
+        <div class="w-full
+                    max-w-4xl
+                    max-h-[90vh]
+                    overflow-y-auto
+                    bg-white
+                    dark:bg-gray-800
+                    rounded-2xl
+                    shadow-2xl">
+
+            <!-- MODAL HEADER -->
+            <div class="sticky top-0
+                        z-10
+                        flex items-center
+                        justify-between
+                        px-5 py-4
+                        bg-white
+                        dark:bg-gray-800
+                        border-b
+                        border-gray-200
+                        dark:border-gray-700">
+
+                <div>
+                    <h2 class="text-lg
+                               font-bold
+                               text-gray-900
+                               dark:text-white">
+
+                        Complete Request Details
+
+                    </h2>
+
+                    <p id="modalTrackingId"
+                       class="mt-1
+                              text-sm
+                              font-semibold
+                              text-blue-600
+                              dark:text-blue-400">
+
+                        N/A
+
+                    </p>
+
+                </div>
+
+                <button id="closeViewModal"
+                        type="button"
+                        class="w-9 h-9
+                               rounded-lg
+                               flex items-center
+                               justify-center
+                               text-gray-500
+                               hover:bg-gray-100
+                               dark:hover:bg-gray-700
+                               dark:text-gray-300">
+
+                    <i class="fa-solid fa-xmark"></i>
+
+                </button>
+
+            </div>
+
+
+            <!-- MODAL BODY -->
+            <div class="p-5 space-y-6">
+                <!--  CUSTOMER INFORMATION -->
+                <div>
+                    <h3 class="mb-3
+                               text-sm
+                               font-semibold
+                               uppercase
+                               tracking-wide
+                               text-gray-500
+                               dark:text-gray-400">
+                        Customer Information
+                    </h3>
+
+                    <div class="grid grid-cols-1
+                                md:grid-cols-2
+                                gap-4">
+
+                        <!-- NAME -->
+                        <div class="rounded-lg
+                                    bg-gray-50
+                                    dark:bg-gray-700/50
+                                    p-3">
+
+                            <p class="text-xs
+                                      text-gray-500
+                                      dark:text-gray-400">
+
+                                Customer Name
+                            </p>
+
+                            <p id="modalCustomer"
+                               class="mt-1
+                                      font-medium
+                                      text-gray-900
+                                      dark:text-white">
+
+                                N/A
+                            </p>
+
+                        </div>
+
+
+                        <!-- PHONE -->
+                        <div class="rounded-lg
+                                    bg-gray-50
+                                    dark:bg-gray-700/50
+                                    p-3">
+
+                            <p class="text-xs
+                                      text-gray-500
+                                      dark:text-gray-400">
+
+                                Mobile
+                            </p>
+
+                            <p id="modalPhone"
+                               class="mt-1
+                                      font-medium
+                                      text-gray-900
+                                      dark:text-white">
+
+                                N/A
+                            </p>
+                        </div>
+
+
+                        <!-- EMAIL -->
+                        <div class="rounded-lg
+                                    bg-gray-50
+                                    dark:bg-gray-700/50
+                                    p-3
+                                    md:col-span-2">
+
+                            <p class="text-xs
+                                      text-gray-500
+                                      dark:text-gray-400">
+
+                                Email
+                            </p>
+
+                            <p id="modalEmail"
+                               class="mt-1
+                                      font-medium
+                                      text-gray-900
+                                      dark:text-white
+                                      break-all">
+
+                                N/A
+                            </p>
+                        </div>
+
+
+                        <!-- ADDRESS -->
+                        <div class="rounded-lg
+                                    bg-gray-50
+                                    dark:bg-gray-700/50
+                                    p-3
+                                    md:col-span-2">
+
+                            <p class="text-xs
+                                      text-gray-500
+                                      dark:text-gray-400">
+                                Address
+                            </p>
+
+                            <p id="modalAddress"
+                               class="mt-1
+                                      font-medium
+                                      text-gray-900
+                                      dark:text-white">
+                                N/A
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SERVICE INFORMATION -->
+
+                <div>
+
+                    <h3 class="mb-3
+                               text-sm
+                               font-semibold
+                               uppercase
+                               tracking-wide
+                               text-gray-500
+                               dark:text-gray-400">
+
+                        Service Information
+
+                    </h3>
+
+                    <div class="grid grid-cols-1
+                                md:grid-cols-3
+                                gap-4">
+
+                        <!-- SERVICE -->
+
+                        <div class="rounded-lg
+                                    bg-gray-50
+                                    dark:bg-gray-700/50
+                                    p-3">
+
+                            <p class="text-xs
+                                      text-gray-500
+                                      dark:text-gray-400">
+
+                                Service
+
+                            </p>
+
+                            <p id="modalService"
+                               class="mt-1
+                                      font-medium
+                                      text-gray-900
+                                      dark:text-white">
+
+                                N/A
+
+                            </p>
+
+                        </div>
+
+
+                        <!-- SERVICE PRICE -->
+
+                        <div class="rounded-lg
+                                    bg-gray-50
+                                    dark:bg-gray-700/50
+                                    p-3">
+
+                            <p class="text-xs
+                                      text-gray-500
+                                      dark:text-gray-400">
+
+                                Service Price
+
+                            </p>
+
+                            <p id="modalServicePrice"
+                               class="mt-1
+                                      font-medium
+                                      text-gray-900
+                                      dark:text-white">
+
+                                N/A
+
+                            </p>
+
+                        </div>
+
+
+                        <!-- REQUEST STATUS -->
+
+                        <div class="rounded-lg
+                                    bg-gray-50
+                                    dark:bg-gray-700/50
+                                    p-3">
+
+                            <p class="text-xs
+                                      text-gray-500
+                                      dark:text-gray-400">
+
+                                Request Status
+
+                            </p>
+
+                            <select id="modalStatus"
+                                    class="mt-1
+                                           w-full
+                                           px-2 py-1.5
+                                           rounded-lg
+                                           border
+                                           border-gray-300
+                                           dark:border-gray-600
+                                           bg-white
+                                           dark:bg-gray-700
+                                           text-gray-900
+                                           dark:text-white
+                                           text-sm">
+
+                                <option value="PENDING">Pending</option>
+                                <option value="CONFIRMED">Confirmed</option>
+                                <option value="IN_PROGRESS">In Progress</option>
+                                <option value="COMPLETED">Completed</option>
+                                <option value="CANCELLED">Cancelled</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!--  SCHEDULE -->
+                <div>
+                    <h3 class="mb-3
+                               text-sm
+                               font-semibold
+                               uppercase
+                               tracking-wide
+                               text-gray-500
+                               dark:text-gray-400">
+
+                        Schedule
+
+                    </h3>
+
+                    <div class="grid grid-cols-1
+                                md:grid-cols-3
+                                gap-4">
+
+                        <!-- DATE -->
+                        <div class="rounded-lg
+                                    bg-gray-50
+                                    dark:bg-gray-700/50
+                                    p-3">
+
+                            <p class="text-xs
+                                      text-gray-500
+                                      dark:text-gray-400">
+
+                                Preferred Date
+
+                            </p>
+
+                            <p id="modalDate"
+                               class="mt-1
+                                      font-medium
+                                      text-gray-900
+                                      dark:text-white">
+
+                                N/A
+
+                            </p>
+
+                        </div>
+
+
+                        <!-- TIME -->
+                        <div class="rounded-lg
+                                    bg-gray-50
+                                    dark:bg-gray-700/50
+                                    p-3">
+
+                            <p class="text-xs
+                                      text-gray-500
+                                      dark:text-gray-400">
+
+                                Preferred Time
+
+                            </p>
+
+                            <p id="modalTime"
+                               class="mt-1
+                                      font-medium
+                                      text-gray-900
+                                      dark:text-white">
+
+                                N/A
+
+                            </p>
+
+                        </div>
+
+
+                        <!-- CREATED -->
+
+                        <div class="rounded-lg
+                                    bg-gray-50
+                                    dark:bg-gray-700/50
+                                    p-3">
+
+                            <p class="text-xs
+                                      text-gray-500
+                                      dark:text-gray-400">
+
+                                Request Created
+
+                            </p>
+
+                            <p id="modalRequestCreatedAt"
+                               class="mt-1
+                                      font-medium
+                                      text-gray-900
+                                      dark:text-white">
+
+                                N/A
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!--  MESSAGE -->
+
+                <div>
+                    <h3 class="mb-3
+                               text-sm
+                               font-semibold
+                               uppercase
+                               tracking-wide
+                               text-gray-500
+                               dark:text-gray-400">
+
+                        Customer Message
+
+                    </h3>
+
+                    <div class="rounded-lg
+                                bg-gray-50
+                                dark:bg-gray-700/50
+                                p-4">
+
+                        <p id="modalMessage"
+                           class="text-sm
+                                  text-gray-700
+                                  dark:text-gray-200
+                                  whitespace-pre-wrap">
+
+                            No message
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!--  PAYMENT INFORMATION -->
+                <div>
+                    <h3 class="mb-3
+                               text-sm
+                               font-semibold
+                               uppercase
+                               tracking-wide
+                               text-gray-500
+                               dark:text-gray-400">
+
+                        Payment Information
+
+                    </h3>
+
+                    <div class="grid grid-cols-1
+                                md:grid-cols-2
+                                gap-4">
+
+                        <!-- PAYMENT STATUS -->
+                        <div class="rounded-lg
+                                    bg-gray-50
+                                    dark:bg-gray-700/50
+                                    p-3">
+
+                            <p class="text-xs
+                                      text-gray-500
+                                      dark:text-gray-400">
+
+                                Payment Status
+
+                            </p>
+
+                            <div id="modalPaymentStatus"
+                                 class="mt-2">
+
+                                N/A
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- PAYMENT AMOUNT -->
+                        <div class="rounded-lg
+                                    bg-gray-50
+                                    dark:bg-gray-700/50
+                                    p-3">
+
+                            <p class="text-xs
+                                      text-gray-500
+                                      dark:text-gray-400">
+
+                                Payment Amount
+
+                            </p>
+
+                            <p id="modalPaymentAmount"
+                               class="mt-1
+                                      font-semibold
+                                      text-green-600
+                                      dark:text-green-400">
+
+                                N/A
+
+                            </p>
+
+                        </div>
+
+
+                        <!-- CURRENCY -->
+                        <div class="rounded-lg
+                                    bg-gray-50
+                                    dark:bg-gray-700/50
+                                    p-3">
+
+                            <p class="text-xs
+                                      text-gray-500
+                                      dark:text-gray-400">
+
+                                Currency
+
+                            </p>
+
+                            <p id="modalCurrency"
+                               class="mt-1
+                                      font-medium
+                                      text-gray-900
+                                      dark:text-white">
+
+                                N/A
+
+                            </p>
+
+                        </div>
+
+
+                        <!-- PAYMENT CREATED -->
+                        <div class="rounded-lg
+                                    bg-gray-50
+                                    dark:bg-gray-700/50
+                                    p-3">
+
+                            <p class="text-xs
+                                      text-gray-500
+                                      dark:text-gray-400">
+
+                                Payment Created
+
+                            </p>
+
+                            <p id="modalPaymentCreatedAt"
+                               class="mt-1
+                                      font-medium
+                                      text-gray-900
+                                      dark:text-white">
+
+                                N/A
+
+                            </p>
+
+                        </div>
+
+
+                        <!-- RAZORPAY ORDER -->
+                        <div class="rounded-lg
+                                    bg-gray-50
+                                    dark:bg-gray-700/50
+                                    p-3
+                                    md:col-span-2">
+
+                            <p class="text-xs
+                                      text-gray-500
+                                      dark:text-gray-400">
+
+                                Razorpay Order ID
+
+                            </p>
+
+                            <p id="modalOrderId"
+                               class="mt-1
+                                      font-mono
+                                      text-sm
+                                      text-gray-900
+                                      dark:text-white
+                                      break-all">
+
+                                N/A
+
+                            </p>
+
+                        </div>
+
+
+                        <!-- RAZORPAY PAYMENT -->
+                        <div class="rounded-lg
+                                    bg-gray-50
+                                    dark:bg-gray-700/50
+                                    p-3
+                                    md:col-span-2">
+
+                            <p class="text-xs
+                                      text-gray-500
+                                      dark:text-gray-400">
+
+                                Razorpay Payment ID
+
+                            </p>
+
+                            <p id="modalPaymentId"
+                               class="mt-1
+                                      font-mono
+                                      text-sm
+                                      text-gray-900
+                                      dark:text-white
+                                      break-all">
+
+                                N/A
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!--   MODAL FOOTER -->
+            <div class="sticky bottom-0
+                        flex flex-col-reverse
+                        sm:flex-row
+                        sm:items-center
+                        sm:justify-end
+                        gap-2
+                        px-5 py-4
+                        bg-white
+                        dark:bg-gray-800
+                        border-t
+                        border-gray-200
+                        dark:border-gray-700">
+
+                <button id="closeModalBtn"
+                        type="button"
+                        class="px-4 py-2.5
+                               rounded-lg
+                               border
+                               border-gray-300
+                               dark:border-gray-600
+                               text-gray-700
+                               dark:text-gray-200
+                               hover:bg-gray-100
+                               dark:hover:bg-gray-700
+                               text-sm
+                               font-medium">
+
+                    Close
+
+                </button>
+
+                <button id="updateStatusBtn"
+                        type="button"
+                        class="px-4 py-2.5
+                               rounded-lg
+                               bg-blue-600
+                               hover:bg-blue-700
+                               text-white
+                               text-sm
+                               font-medium">
+
+                    Update Status
+                </button>
+            </div>
+        </div>
+    </div>
+    <script th:src="@{/js/admin-report.js}"></script>
+</section>
+</body>
+</html>

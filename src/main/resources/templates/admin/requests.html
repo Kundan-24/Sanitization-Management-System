@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{admin/admin-layout :: adminLayout(~{::section},~{::title})}">
+    <head>
+        <title>Sanitization Requests</title>
+    </head>
+    <body>
+        <section>
+            <div class="p-4 sm:p-6 lg:p-8">
+                <!-- PAGE HEADER -->
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">Sanitization Requests</h1>
+                        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Manage customer service requests.</p>
+                    </div>
+                    <button id="refreshRequestsBtn" type="button"
+                        class="inline-flex items-center gap-2
+                           px-4 py-2.5
+                           rounded-lg
+                           bg-blue-600 hover:bg-blue-700
+                           text-white text-sm font-medium
+                           transition">
+                        <i class="fa-solid fa-rotate-right"></i>
+                        Refresh
+                    </button>
+                </div>
+                <!-- STATS -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6">
+                    <!-- TOTAL -->
+                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Total</p>
+                        <div class="flex items-center justify-between mt-2">
+                            <h3 id="totalRequests" class="text-2xl font-bold text-gray-900 dark:text-white">0</h3>
+                            <span class="w-9 h-9 rounded-lg
+                                 bg-blue-100 text-blue-600
+                                 dark:bg-blue-900/30
+                                 dark:text-blue-400
+                                 flex items-center justify-center">
+                                <i class="fa-solid fa-list"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- PENDING -->
+                    <div class="bg-white dark:bg-gray-800
+                        border border-gray-200 dark:border-gray-700
+                        rounded-xl p-4">
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Pending</p>
+                        <div class="flex items-center justify-between mt-2">
+                            <h3 id="pendingRequests" class="text-2xl font-bold text-gray-900 dark:text-white">0</h3>
+                                <span class="w-9 h-9 rounded-lg
+                                 bg-yellow-100 text-yellow-600
+                                 dark:bg-yellow-900/30
+                                 dark:text-yellow-400
+                                 flex items-center justify-center">
+                                <i class="fa-solid fa-clock"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                     <!-- IN PROGRESS -->
+                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                        <p class="text-sm text-gray-500 dark:text-gray-400">In Progress</p>
+                        <div class="flex items-center justify-between mt-2">
+                            <h3 id="progressRequests" class="text-2xl font-bold text-gray-900 dark:text-white">0</h3>
+                            <span class="w-9 h-9 rounded-lg
+                                 bg-purple-100 text-purple-600
+                                 dark:bg-purple-900/30
+                                 dark:text-purple-400
+                                 flex items-center justify-center">
+                                <i class="fa-solid fa-spinner"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- COMPLETED -->
+                    <div class="bg-white dark:bg-gray-800
+                        border border-gray-200 dark:border-gray-700
+                        rounded-xl p-4">
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Completed</p>
+                        <div class="flex items-center justify-between mt-2">
+                            <h3 id="completedRequests" class="text-2xl font-bold text-gray-900 dark:text-white">0</h3>
+                            <span class="w-9 h-9 rounded-lg
+                                 bg-green-100 text-green-600
+                                 dark:bg-green-900/30
+                                 dark:text-green-400
+                                 flex items-center justify-center">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+        <!-- LIVE FILTER -->
+        <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-4 mb-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <!-- SEARCH -->
+                <div class="relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-3.5 text-gray-400"></i>
+                    <input id="requestSearch" type="search" placeholder="Search tracking ID, name or mobile" autocomplete="off"
+                           class="w-full pl-10 pr-4 py-2.5
+                                  rounded-lg
+                                  border border-gray-300
+                                  dark:border-gray-600
+                                  bg-gray-50
+                                  dark:bg-gray-700
+                                  text-gray-900
+                                  dark:text-white
+                                  placeholder-gray-400
+                                  focus:ring-2
+                                  focus:ring-blue-500
+                                  focus:border-blue-500
+                                  outline-none">
+                </div>
+
+                <!-- STATUS -->
+                <select id="statusFilter"
+                        class="w-full px-3 py-2.5
+                               rounded-lg
+                               border border-gray-300
+                               dark:border-gray-600
+                               bg-gray-50
+                               dark:bg-gray-700
+                               text-gray-900
+                               dark:text-white
+                               focus:ring-2
+                               focus:ring-blue-500
+                               outline-none">
+                    <option value="">All Status</option>
+                    <option value="PENDING">Pending</option>
+                    <option value="CONFIRMED">Confirmed</option>
+                    <option value="IN_PROGRESS">In Progress</option>
+                    <option value="COMPLETED">Completed</option>
+                    <option value="CANCELLED">Cancelled</option>
+                </select>
+
+                <!-- DATE -->
+                <input id="requestDate" type="date"
+                       class="w-full px-3 py-2.5
+                              rounded-lg
+                              border border-gray-300
+                              dark:border-gray-600
+                              bg-gray-50
+                              dark:bg-gray-700
+                              text-gray-900
+                              dark:text-white
+                              focus:ring-2
+                              focus:ring-blue-500
+                              outline-none">
+            </div>
+
+            <!-- LIVE FILTER INFO + RESET -->
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mt-3">
+                <p class="text-xs text-gray-500 dark:text-gray-400">
+                    <i class="fa-solid fa-circle-info mr-1"></i>
+                    Filters update automatically.
+                </p>
+
+                <button id="resetFilterBtn" type="button"
+                        class="self-start sm:self-auto
+                               px-4 py-2
+                               rounded-lg
+                               border border-gray-300
+                               dark:border-gray-600
+                               text-gray-700
+                               dark:text-gray-200
+                               hover:bg-gray-100
+                               dark:hover:bg-gray-700
+                               text-sm font-medium
+                               transition">
+                    <i class="fa-solid fa-rotate-left mr-1"></i>Reset
+                </button>
+            </div>
+        </div>
+
+        <!-- REQUEST TABLE -->
+        <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+            <!-- TABLE HEADER -->
+            <div class="flex items-center justify-between px-5 py-4 border-b border-gray-200 dark:border-gray-700">
+                <div>
+                    <h2 class="font-semibold text-gray-900 dark:text-white">Service Requests</h2>
+                    <p id="requestCountText" class="text-xs mt-1 text-gray-500 dark:text-gray-400">Loading...</p>
+                </div>
+            </div>
+
+            <!-- LOADING -->
+            <div id="loadingState" class="hidden py-14 text-center">
+                <i class="fa-solid fa-spinner fa-spin text-2xl text-blue-600"></i>
+                <p class="mt-3 text-sm text-gray-500 dark:text-gray-400">Loading requests...</p>
+            </div>
+
+            <!-- EMPTY -->
+            <div id="emptyState" class="hidden py-14 text-center">
+                <i class="fa-solid fa-inbox text-3xl text-gray-400"></i>
+                <p class="mt-3 font-medium text-gray-700 dark:text-gray-200">No requests found</p>
+                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Try changing your filters.</p>
+            </div>
+
+            <!-- TABLE -->
+            <div id="tableContainer" class="overflow-x-auto">
+                <table class="w-full min-w-[1050px] text-sm text-left">
+                    <thead class="bg-gray-50 dark:bg-gray-700">
+                        <tr class="text-xs uppercase text-gray-500 dark:text-gray-300">
+                            <th class="px-5 py-3">#</th>
+                            <th class="px-5 py-3">Tracking ID</th>
+                            <th class="px-5 py-3">Customer</th>
+                            <th class="px-5 py-3">Mobile</th>
+                            <th class="px-5 py-3">Service</th>
+                            <th class="px-5 py-3">Date</th>
+                            <th class="px-5 py-3">Time</th>
+                            <th class="px-5 py-3">Status</th>
+                            <th class="px-5 py-3 text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="requestsTableBody" class="divide-y divide-gray-200 dark:divide-gray-700"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIEW / EDIT MODAL -->
+    <div id="requestViewModal" class="hidden fixed inset-0 z-[100] bg-black/50 items-center justify-center p-4">
+        <div class="w-full max-w-xl max-h-[90vh] overflow-y-auto bg-white dark:bg-gray-800 rounded-xl shadow-xl">
+            <!-- MODAL HEADER -->
+            <div class="flex items-center justify-between px-5 py-4 border-b border-gray-200 dark:border-gray-700">
+                <div>
+                    <h2 class="font-semibold text-gray-900 dark:text-white">Request Details</h2>
+                    <p id="modalTrackingId" class="text-xs mt-1 text-blue-600 dark:text-blue-400"></p>
+                </div>
+                <button id="closeViewModal" type="button"
+                        class="w-8 h-8
+                               rounded-lg
+                               text-gray-500
+                               hover:bg-gray-100
+                               dark:hover:bg-gray-700">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- MODAL BODY -->
+            <div class="p-5 space-y-4">
+                <!-- CUSTOMER -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">Customer</p>
+                        <p id="modalCustomer" class="mt-1 font-medium text-gray-900 dark:text-white"></p>
+                    </div>
+
+                    <div>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">Mobile</p>
+                        <p id="modalPhone" class="mt-1 font-medium text-gray-900 dark:text-white"></p>
+                    </div>
+
+                    <div>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">Email</p>
+                        <p id="modalEmail" class="mt-1 font-medium text-gray-900 dark:text-white break-all"></p>
+                    </div>
+
+                    <div>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">Service</p>
+                        <p id="modalService" class="mt-1 font-medium text-gray-900 dark:text-white"></p>
+                    </div>
+                </div>
+
+                <!-- SERVICE PRICE -->
+                <div>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">Service Price</p>
+                    <p id="modalServicePrice" class="mt-1 font-medium text-gray-900 dark:text-white">N/A</p>
+                </div>
+
+                <!-- ADDRESS -->
+                <div>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">Address</p>
+                    <p id="modalAddress" class="mt-1 text-sm text-gray-800 dark:text-gray-200"></p>
+                </div>
+
+                <!-- DATE / TIME -->
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">Preferred Date</p>
+                        <p id="modalDate" class="mt-1 font-medium text-gray-900 dark:text-white"></p>
+                    </div>
+
+                    <div>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">Preferred Time</p>
+                        <p id="modalTime" class="mt-1 font-medium text-gray-900 dark:text-white"></p>
+                    </div>
+                </div>
+
+                <!-- MESSAGE -->
+                <div>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">Message</p>
+                    <p id="modalMessage" class="mt-1 text-sm text-gray-800 dark:text-gray-200"></p>
+                </div>
+
+                <!-- REQUEST CREATED -->
+                <div>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">Request Created</p>
+                    <p id="modalRequestCreatedAt" class="mt-1 font-medium text-gray-900 dark:text-white">N/A</p>
+                </div>
+
+                <!-- PAYMENT DETAILS -->
+                <div class="pt-3 border-t border-gray-200 dark:border-gray-700">
+                    <h3 class="font-semibold text-gray-900 dark:text-white mb-3">Payment Details</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">Payment Status</p>
+                            <p id="modalPaymentStatus" class="mt-1">N/A</p>
+                        </div>
+
+                        <div>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">Payment Amount</p>
+                            <p id="modalPaymentAmount" class="mt-1 font-medium text-gray-900 dark:text-white">N/A</p>
+                        </div>
+
+                        <div>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">Currency</p>
+                            <p id="modalCurrency" class="mt-1 font-medium text-gray-900 dark:text-white">N/A</p>
+                        </div>
+
+                        <div>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">Razorpay Order ID</p>
+                            <p id="modalOrderId" class="mt-1 text-xs font-mono break-all text-gray-900 dark:text-white">N/A</p>
+                        </div>
+
+                        <div>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">Razorpay Payment ID</p>
+                            <p id="modalPaymentId" class="mt-1 text-xs font-mono break-all text-gray-900 dark:text-white">N/A</p>
+                        </div>
+
+                        <div>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">Payment Created</p>
+                            <p id="modalPaymentCreatedAt" class="mt-1 font-medium text-gray-900 dark:text-white">N/A</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STATUS -->
+                <div class="pt-3
+                            border-t border-gray-200
+                            dark:border-gray-700">
+                    <label for="modalStatus"
+                           class="block mb-2 text-sm font-medium
+                                  text-gray-700
+                                  dark:text-gray-300">
+                        Request Status
+                    </label>
+                    <div class="flex gap-2">
+                        <select id="modalStatus"
+                                class="flex-1 px-3 py-2.5
+                                       rounded-lg
+                                       border border-gray-300
+                                       dark:border-gray-600
+                                       bg-white
+                                       dark:bg-gray-700
+                                       text-gray-900
+                                       dark:text-white
+                                       outline-none">
+
+                            <option value="PENDING">Pending</option>
+                            <option value="CONFIRMED">Confirmed</option>
+                            <option value="IN_PROGRESS">In Progress</option>
+                            <option value="COMPLETED">Completed</option>
+                            <option value="CANCELLED">Cancelled</option>
+                        </select>
+                        <button id="updateStatusBtn"
+                                type="button"
+                                class="px-4 py-2.5
+                                       rounded-lg
+                                       bg-blue-600
+                                       hover:bg-blue-700
+                                       text-white text-sm
+                                       font-medium">
+                            Update
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script th:src="@{/js/admin-requests.js}"></script>
+</section>
+</body>
+</html>

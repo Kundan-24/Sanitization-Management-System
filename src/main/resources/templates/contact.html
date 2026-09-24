@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base :: parent(~{::#content}, ~{::title}, ~{::script})}">
+<head>
+    <title>Contact Us | SANITIZATION MANAGEMENT SYSTEM</title>
+</head>
+<body id="content">
+<section>
+    <!-- ==================== HERO ==================== -->
+    <section class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+        <div class="max-w-screen-xl mx-auto px-6 sm:px-8 lg:px-12 py-20 lg:py-24">
+            <div class="max-w-3xl">
+                <p class="text-sm font-semibold tracking-widest uppercase text-blue-600 dark:text-blue-400">Contact Us</p>
+                <h1 class="mt-4 text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-white">
+                    Get in
+                    <span class="text-blue-600 dark:text-blue-400">Touch</span>
+                </h1>
+                <p class="mt-6 text-lg leading-relaxed text-gray-600 dark:text-gray-300">
+                    For any information about our sanitization services,
+                    feel free to contact us through the details below.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT INFORMATION ==================== -->
+    <section class="bg-white dark:bg-gray-900">
+        <div class="max-w-screen-xl mx-auto px-6 sm:px-8 lg:px-12 py-20">
+            <div class="max-w-5xl mx-auto">
+                <!-- Heading -->
+                <div class="text-center mb-12">
+                    <p class="text-sm font-semibold uppercase tracking-widest text-blue-600 dark:text-blue-400">
+                        Contact Information
+                    </p>
+                    <h2 class="mt-3 text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">We are here to help</h2>
+                    <p class="mt-4 max-w-2xl mx-auto leading-7 text-gray-600 dark:text-gray-300">
+                        Contact our team for information and assistance
+                        related to our sanitization services.
+                    </p>
+                </div>
+
+                <!-- Contact Cards -->
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- ================= EMAIL ================= -->
+                    <div class="p-6
+                                rounded-2xl
+                                border border-gray-200
+                                dark:border-gray-700
+                                bg-gray-50 dark:bg-gray-800
+                                shadow-sm">
+                        <div class="w-12 h-12
+                                    flex items-center justify-center
+                                    rounded-xl
+                                    bg-blue-50 dark:bg-blue-900/30
+                                    text-blue-600 dark:text-blue-400">
+                            <i class="fa-solid fa-envelope text-xl"></i>
+                        </div>
+                        <h3 class="mt-5 text-lg font-semibold text-gray-900 dark:text-white">Email</h3>
+                        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                            info@sanitization.com
+                        </p>
+                        <a href="mailto:info@sanitization.com"
+                           class="inline-flex items-center gap-2
+                                  mt-4
+                                  text-sm font-medium
+                                  text-blue-600 dark:text-blue-400
+                                  hover:underline">
+                            Contact by Email
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+
+                    <!-- ================= PHONE ================= -->
+                    <div class="p-6
+                                rounded-2xl
+                                border border-gray-200
+                                dark:border-gray-700
+                                bg-gray-50 dark:bg-gray-800
+                                shadow-sm">
+                        <div class="w-12 h-12
+                                    flex items-center justify-center
+                                    rounded-xl
+                                    bg-blue-50 dark:bg-blue-900/30
+                                    text-blue-600 dark:text-blue-400">
+                            <i class="fa-solid fa-phone text-xl"></i>
+                        </div>
+                        <h3 class="mt-5 text-lg font-semibold text-gray-900 dark:text-white">Phone</h3>
+                        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                            +91 00000 00000
+                        </p>
+                        <a href="tel:+910000000000" class="inline-flex items-center gap-2 mt-4 text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline">
+                            Call Us
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+
+                    <!-- ================= ADDRESS ================= -->
+                    <div class="p-6 rounded-2xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 shadow-sm">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">
+                            <i class="fa-solid fa-location-dot text-xl"></i>
+                        </div>
+                        <h3 class="mt-5 text-lg font-semibold text-gray-900 dark:text-white">Address</h3>
+                        <p class="mt-2 text-sm leading-6 text-gray-600 dark:text-gray-400">
+                            Your City, India
+                        </p>
+                    </div>
+
+                    <!-- ================= WORKING HOURS ================= -->
+                    <div class="p-6 rounded-2xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 shadow-sm">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">
+                            <i class="fa-solid fa-clock text-xl"></i>
+                        </div>
+                        <h3 class="mt-5 text-lg font-semibold text-gray-900 dark:text-white">Working Hours</h3>
+                        <p class="mt-2 text-sm leading-6 text-gray-600 dark:text-gray-400">
+                            Monday - Saturday<br>
+                            9:00 AM - 6:00 PM
+                        </p>
+                    </div>
+
+                    <!-- ================= SERVICE SUPPORT ================= -->
+                    <div class="p-6 rounded-2xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 shadow-sm">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">
+                            <i class="fa-solid fa-headset text-xl"></i>
+                        </div>
+                        <h3 class="mt-5 text-lg font-semibold text-gray-900 dark:text-white">Service Support</h3>
+                        <p class="mt-2 text-sm leading-6 text-gray-600 dark:text-gray-400">
+                            Contact us for information about
+                            sanitization services and bookings.
+                        </p>
+                    </div>
+                    <!-- ================= LOCATION ================= -->
+                    <div class="p-6 rounded-2xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 shadow-sm">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">
+                            <i class="fa-solid fa-map-location-dot text-xl"></i>
+                        </div>
+                        <h3 class="mt-5 text-lg font-semibold text-gray-900 dark:text-white">Service Area</h3>
+                        <p class="mt-2 text-sm leading-6 text-gray-600 dark:text-gray-400">
+                            Serving customers across
+                            selected areas in India.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+<script>console.log("Contact page loaded");</script>
+</body>
+</html>

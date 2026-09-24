@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base :: parent(~{::section}, ~{::title}, ~{::script})}">
+
+    <head>
+        <title>Request Service - Sanitization Management System</title>
+    </head>
+
+    <body>
+        <section>
+            <!-- =========================================================
+                            PAGE
+             ========================================================== -->
+            <div class="min-h-[calc(100vh-4rem)] bg-gray-50 dark:bg-gray-900 py-8 sm:py-12">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <!-- =================================================
+                            HEADER
+                    ================================================== -->
+                    <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-700 via-blue-600 to-cyan-500 shadow-xl mb-8">
+                        <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-white/10 blur-2xl"></div>
+                        <div class="absolute -bottom-32 -left-20 w-80 h-80 rounded-full bg-cyan-300/10 blur-3xl"></div>
+                        <div class="relative px-6 py-8 sm:px-10 sm:py-10">
+                            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6"><div>
+                            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 border border-white/20 text-white text-xs font-semibold uppercase tracking-wider">
+                                <i class="fa-solid fa-sparkles"></i>
+                                Professional Sanitization
+                            </div>
+                            <h1 class="mt-4 text-3xl sm:text-4xl font-extrabold text-white">Request Your Service</h1>
+                            <p class="mt-3 max-w-2xl text-sm sm:text-base leading-7 text-blue-50">
+                                Complete the details below and schedule
+                                your professional sanitization service
+                                at your preferred date and time.
+                            </p>
+                        </div>
+
+                        <div class="hidden sm:flex shrink-0 w-24 h-24 rounded-3xl bg-white/10 border border-white/20 items-center justify-center backdrop-blur-sm">
+                            <i class="fa-solid fa-spray-can-sparkles text-5xl text-white"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- =================================================
+                 SELECTED SERVICE
+            ================================================== -->
+            <div class="mb-8">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-900/30">
+                        <i class="fa-solid fa-broom text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-900 dark:text-white">Selected Service</h2>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Your selected service from our services page</p>
+                    </div>
+                </div>
+
+                <div class="relative overflow-hidden bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-sm">
+                    <div class="grid grid-cols-1 md:grid-cols-[240px_1fr]">
+                        <!-- IMAGE -->
+                        <div class="h-56 md:h-full min-h-[220px] overflow-hidden bg-gray-100 dark:bg-gray-700">
+                            <img id="selectedServiceImage" src="/images/default-service.webp" alt="Selected Service"
+                                 class="w-full h-full object-cover transition-transform duration-500">
+                        </div>
+
+                        <!-- CONTENT -->
+                        <div class="p-6 sm:p-8">
+                            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-5">
+                                <div>
+                                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-xs font-semibold">
+                                        <i class="fa-solid fa-circle-check"></i>Selected
+                                    </span>
+
+                                    <h3 id="selectedServiceName" class="mt-3 text-2xl sm:text-3xl font-extrabold text-gray-900 dark:text-white">Loading service...</h3>
+                                    <p id="selectedServiceDescription" class="mt-3 max-w-2xl text-sm leading-6 text-gray-600 dark:text-gray-400">
+                                        Please wait while we load your selected service.
+                                    </p>
+                                </div>
+
+                                <div class="shrink-0 sm:text-right">
+                                    <p class="text-xs uppercase tracking-wider font-semibold text-gray-500 dark:text-gray-400">
+                                        Starting From
+                                    </p>
+                                    <p id="selectedServicePrice" class="mt-1 text-2xl font-extrabold text-blue-600 dark:text-blue-400">₹0.00</p>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 pt-5 border-t border-gray-200 dark:border-gray-700">
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 shrink-0 rounded-xl bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center">
+                                            <i class="fa-solidfa-shield-halved text-blue-600 dark:text-blue-400"></i>
+                                        </div>
+
+                                        <div>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">Service Type</p>
+                                            <p class="text-sm font-semibold text-gray-800 dark:text-gray-200">Professional</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 shrink-0 rounded-xl bg-cyan-50 dark:bg-cyan-900/20 flex items-center justify-center">
+                                            <i class="fa-solid fa-calendar-check text-cyan-600 dark:text-cyan-400"></i>
+                                        </div>
+
+                                        <div>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">Scheduling</p>
+                                            <p class="text-sm font-semibold text-gray-800 dark:text-gray-200">Flexible</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 shrink-0 rounded-xl bg-green-50 dark:bg-green-900/20 flex items-center justify-center">
+                                            <i class="fa-solid fa-check text-green-600 dark:text-green-400"></i>
+                                        </div>
+
+                                        <div>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">Status</p>
+                                            <p id="selectedServiceStatus" class="text-sm font-semibold text-gray-500 dark:text-gray-400">Loading...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <input type="hidden" id="serviceType" value="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- =================================================
+                 MAIN FORM
+            ================================================== -->
+
+            <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-sm overflow-hidden">
+                <form id="serviceRequestForm" novalidate>
+                    <!-- =================================================
+                         CUSTOMER INFORMATION
+                    ================================================== -->
+                    <div class="p-6 sm:p-8 border-b border-gray-200 dark:border-gray-700">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="flex items-center justify-center w-11 h-11 rounded-xl bg-blue-100 dark:bg-blue-900/30">
+                                <i class="fa-solid fa-user text-blue-600 dark:text-blue-400"></i>
+                            </div>
+
+                            <div>
+                                <h2 class="text-xl font-bold text-gray-900 dark:text-white">Customer Information</h2>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Tell us how we can contact you</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <!-- NAME -->
+                            <div>
+                                <label for="customerName" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-white">
+                                    Full Name <span class="text-red-500">*</span>
+                                </label>
+
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                        <i class="fa-solid fa-user text-gray-400"></i>
+                                    </div>
+
+                                    <input type="text" id="customerName" maxlength="100" required autocomplete="name" placeholder="Enter your full name"
+                                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500
+                                                  block w-full pl-10 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400">
+                                </div>
+                            </div>
+
+                            <!-- MOBILE -->
+                            <div>
+                                <label for="customerMobile" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-white">
+                                    Mobile Number<span class="text-red-500">*</span>
+                                </label>
+
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                        <i class="fa-solid fa-phone text-gray-400"></i>
+                                    </div>
+                                    <input type="tel" id="customerMobile" maxlength="10" minlength="10" pattern="[0-9]{10}" required autocomplete="tel" inputmode="numeric" placeholder="10 digit mobile number"
+                                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-fullpl-10 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400">
+                                </div>
+                            </div>
+
+                            <!-- EMAIL -->
+                            <div class="md:col-span-2">
+                                <label for="customerEmail" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-white">
+                                    Email Address <span class="ml-1 text-gray-400 font-normal">(Optional)</span>
+                                </label>
+
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                        <i class="fa-solid fa-envelope text-gray-400"></i>
+                                    </div>
+
+                                    <input type="email" id="customerEmail" maxlength="100" autocomplete="email" placeholder="Enter your email address"
+                                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500
+                                                  focus:border-blue-500 block w-full pl-10 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- =================================================
+                         SCHEDULE
+                    ================================================== -->
+                    <div class="p-6 sm:p-8 border-b border-gray-200 dark:border-gray-700">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="flex items-center justify-center w-11 h-11 rounded-xl bg-cyan-100 dark:bg-cyan-900/30">
+                                <i class="fa-solid fa-calendar-days text-cyan-600 dark:text-cyan-400"></i>
+                            </div>
+
+                            <div>
+                                <h2 class="text-xl font-bold text-gray-900 dark:text-white">Schedule Service</h2>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Select your preferred date and time</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <!-- DATE -->
+                            <div>
+                                <label for="serviceDate" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-white">
+                                    Service Date<span class="text-red-500">*</span>
+                                </label>
+
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                        <i class="fa-solid fa-calendar text-gray-400"></i>
+                                    </div>
+                                    <input type="date" id="serviceDate" required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                                </div>
+                                <p class="mt-2 text-xs text-gray-500 dark:text-gray-400">Select today or a future date.</p>
+                            </div>
+
+                            <!-- TIME -->
+                            <div>
+                                <label for="serviceTime" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-white">
+                                    Preferred Time<span class="text-red-500">*</span>
+                                </label>
+
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                        <i class="fa-solid fa-clock text-gray-400"></i>
+                                    </div>
+                                    <select id="serviceTime" required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                                        <option value="" selected disabled>Select preferred time</option>
+                                        <option value="09:00:00">09:00 AM - 11:00 AM</option>
+                                        <option value="11:00:00">11:00 AM - 01:00 PM</option>
+                                        <option value="13:00:00">01:00 PM - 03:00 PM</option>
+                                        <option value="15:00:00">03:00 PM - 05:00 PM</option>
+                                        <option value="17:00:00">05:00 PM - 07:00 PM</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- =================================================
+                         SERVICE LOCATION
+                    ================================================== -->
+                    <div class="p-6 sm:p-8 border-b border-gray-200 dark:border-gray-700">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="flex items-center justify-center w-11 h-11 rounded-xl bg-purple-100 dark:bg-purple-900/30">
+                                <i class="fa-solid fa-location-dot text-purple-600 dark:text-purple-400"></i>
+                            </div>
+                            <div>
+                                <h2 class="text-xl font-bold text-gray-900 dark:text-white">Service Location</h2>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Where should our team provide the service?</p>
+                            </div>
+                        </div>
+                        <label for="serviceAddress" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-white">
+                            Complete Address
+                            <span class="text-red-500">*</span>
+                        </label>
+                        <div class="relative">
+                            <div class="absolute top-4 left-3 pointer-events-none">
+                                <i class="fa-solid fa-location-dot text-gray-400"></i>
+                            </div>
+                            <textarea id="serviceAddress" rows="4" maxlength="500" required autocomplete="street-address" placeholder="Enter complete service address..."
+                                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500
+                                             focus:border-blue-500 block w-full pl-10 p-3.5 dark:bg-gray-700 dark:border-gray-600
+                                             dark:text-white dark:placeholder-gray-400">
+                            </textarea>
+                        </div>
+                        <div class="mt-3 flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+                            <i class="fa-solid fa-circle-info"></i>
+                            Please provide a complete and accurate service location.
+                        </div>
+                    </div>
+
+
+                    <!-- =================================================
+                         ADDITIONAL DETAILS
+                    ================================================== -->
+                    <div class="p-6 sm:p-8 border-b border-gray-200 dark:border-gray-700">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="flex items-center justify-center w-11 h-11 rounded-xl bg-amber-100 dark:bg-amber-900/30">
+                                <i class="fa-solid fa-message text-amber-600 dark:text-amber-400"></i>
+                            </div>
+
+                            <div>
+                                <h2 class="text-xl font-bold text-gray-900 dark:text-white">Additional Details</h2>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Tell us anything else we should know</p>
+                            </div>
+                        </div>
+
+
+                        <label for="additionalDetails" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-white">
+                            Additional Information
+                            <span class="ml-1 text-gray-400 font-normal">(Optional)</span>
+                        </label>
+
+                        <textarea id="additionalDetails" rows="4" maxlength="100" placeholder="Any special instructions or requirements..."
+                                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500
+                                         focus:border-blue-500 block w-full p-3.5 dark:bg-gray-700 dark:border-gray-600
+                                         dark:text-white dark:placeholder-gray-400">
+
+                        </textarea>
+
+                        <div class="mt-2 flex justify-between">
+                            <p class="text-xs text-gray-500 dark:text-gray-400">Optional information for our team.</p>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">Maximum 100 characters</p>
+                        </div>
+                    </div>
+
+                    <!-- =================================================
+                         CONFIRMATION
+                    ================================================== -->
+                    <div class="p-6 sm:p-8 bg-gray-50 dark:bg-gray-800/50">
+                        <div class="flex items-start gap-3">
+                            <div class="flex items-center h-5">
+                                <input id="terms" type="checkbox" required
+                                       class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600">
+                            </div>
+
+                            <div>
+                                <label for="terms" class="text-sm font-medium text-gray-700 dark:text-gray-300">
+                                    I confirm that all information provided above is correct.
+                                </label>
+
+                                <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                                    Our team will use these details to process your service request.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- BUTTONS -->
+                        <div class="mt-7 flex flex-col sm:flex-row gap-3">
+                            <button type="submit" id="submitRequestBtn" disabled
+                                    class="group inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold
+                                           text-white bg-blue-600 rounded-xl hover:bg-blue-700 focus:ring-4 focus:ring-blue-300
+                                           disabled:opacity-50 disabled:cursor-not-allowed transition">
+                                <i class="fa-solid fa-credit-card"></i>
+                                Pay & Submit Request
+                            </button>
+
+
+                            <button type="reset" id="resetRequestBtn"
+                                    class="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold text-gray-700
+                                           bg-white border border-gray-300 rounded-xl hover:bg-gray-100 dark:bg-gray-700 dark:border-gray-600
+                                           dark:text-gray-200 dark:hover:bg-gray-600 transition">
+                                        <i class="fa-solid fa-rotate-left"></i>Reset
+                            </button>
+                        </div>
+
+                        <div class="mt-6 flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+                            <i class="fa-solid fa-shield-halved text-green-500"></i>
+                            Your request details are used only for service processing and tracking.
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+            <!-- =================================================
+                 TRUST SECTION
+            ================================================== -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
+                <div class="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl">
+                    <div class="w-10 h-10 shrink-0 rounded-xl bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center">
+                        <i class="fa-solid fa-clock text-blue-600 dark:text-blue-400"></i>
+                    </div>
+
+                    <div>
+                        <p class="text-sm font-semibold text-gray-900 dark:text-white">Flexible Scheduling</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">Choose your preferred time</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl">
+                    <div class="w-10 h-10 shrink-0 rounded-xl bg-green-50 dark:bg-green-900/20 flex items-center justify-center">
+                        <i class="fa-solid fa-shield-halved text-green-600 dark:text-green-400"></i>
+                    </div>
+
+                    <div>
+                        <p class="text-sm font-semibold text-gray-900 dark:text-white">Professional Service</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">Safe & hygienic solutions</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl">
+                    <div class="w-10 h-10 shrink-0 rounded-xl bg-purple-50 dark:bg-purple-900/20 flex items-center justify-center">
+                        <i class="fa-solid fa-location-crosshairs text-purple-600 dark:text-purple-400"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm font-semibold text-gray-900 dark:text-white">Request Tracking</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">Track your request anytime</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- RAZORPAY -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    console.log("SERVICE REQUEST PAGE STARTED");
+    /*  RAZORPAY TEST KEY  */
+    const RAZORPAY_KEY_ID = "rzp_test_Tf3zMni0yrHfR7";
+    /* ELEMENTS */
+    const form = document.getElementById("serviceRequestForm");
+    const customerName = document.getElementById("customerName");
+    const customerMobile = document.getElementById("customerMobile");
+    const customerEmail = document.getElementById("customerEmail");
+    const serviceType = document.getElementById("serviceType");
+    const serviceDate = document.getElementById("serviceDate");
+    const serviceTime = document.getElementById("serviceTime");
+    const serviceAddress = document.getElementById("serviceAddress");
+    const additionalDetails = document.getElementById("additionalDetails");
+    const terms = document.getElementById("terms");
+    const submitBtn = document.getElementById("submitRequestBtn");
+    const resetBtn = document.getElementById("resetRequestBtn");
+    const serviceImage = document.getElementById("selectedServiceImage");
+    const serviceName = document.getElementById("selectedServiceName");
+    const serviceDescription = document.getElementById("selectedServiceDescription");
+    const servicePrice = document.getElementById("selectedServicePrice");
+    const serviceStatus = document.getElementById("selectedServiceStatus");
+
+
+    /*SERVICE ID FROM URL */
+    const params = new URLSearchParams(window.location.search);
+    const selectedServiceId = params.get("serviceId");
+    /* STATE */
+    let selectedService = null;
+    let servicesLoaded = false;
+    let paymentInProgress = false;
+
+    /* TODAY */
+    function getTodayDate() {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, "0");
+        const day = String(today.getDate()).padStart(2, "0");
+        return `${year}-${month}-${day}`;
+    }
+
+    serviceDate.min = getTodayDate();
+    /* HTML ESCAPE */
+    function escapeHtml(value) {
+        const div = document.createElement("div");
+        div.textContent = value ?? "";
+        return div.innerHTML;
+    }
+
+    /* BUTTON STATE */
+    function setSubmitButton(loading = false, text = "Pay & Submit Request") {
+        if (loading) {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `
+            <i class="fa-solid fa-spinner fa-spin"></i>
+            ${text}`;
+            return;
+        }
+
+        submitBtn.disabled = !servicesLoaded || paymentInProgress;
+        submitBtn.innerHTML = `<i class="fa-solid fa-credit-card group-hover:translate-x-1 transition-transform"> </i>
+        Pay & Submit Request`;
+    }
+
+    /* LOAD SERVICE */
+    async function loadSelectedService() {
+        if (!selectedServiceId) {
+            showServiceError("No service was selected.");
+            return;
+        }
+        try {
+            console.log("Loading service:", selectedServiceId);
+            const response = await fetch("/api/services/active", {
+                        method: "GET", headers: {"Accept": "application/json"},
+                        cache: "no-cache"
+                    }
+                );
+
+            if (!response.ok) {
+                throw new Error("Unable to load available services.");
+            }
+
+            const services = await response.json();
+
+            if (!Array.isArray(services)) {
+                throw new Error("Invalid service response.");
+            }
+
+            selectedService = services.find(service => String(service.id) === String(selectedServiceId));
+
+            if (!selectedService) {
+                throw new Error("Selected service is no longer available.");
+            }
+
+            /* IMAGE */
+            const image = selectedService.image && String(selectedService.image).trim() !== "" ? selectedService.image : "/images/default-service.webp";
+            serviceImage.src = image;
+            serviceImage.alt = selectedService.name || "Selected Service";
+            serviceImage.onerror = function () {
+                    this.onerror = null;
+                    this.src = "/images/default-service.webp";
+                };
+
+            /* NAME */
+            serviceName.textContent = selectedService.name || "Sanitization Service";
+
+            /* DESCRIPTION */
+            serviceDescription.textContent = selectedService.description && String(selectedService.description).trim() !== "" ? selectedService.description
+                : "Professional sanitization service for a cleaner and healthier environment.";
+
+            /* PRICE */
+            const price = Number(selectedService.price || 0);
+            servicePrice.textContent = `₹${price.toFixed(2)}`;
+
+            /* STATUS */
+            serviceStatus.textContent = "Available";
+            serviceStatus.classList.remove("text-gray-500", "dark:text-gray-400");
+            serviceStatus.classList.add("text-green-600", "dark:text-green-400");
+
+            /* SERVICE ID */
+            serviceType.value = String(selectedService.id);
+            servicesLoaded = true;
+            setSubmitButton();
+            console.log("Selected service loaded:", selectedService);
+        } catch (error) {
+            console.error("Service loading failed:", error);
+            showServiceError(error.message || "Unable to load selected service.");
+        }
+    }
+
+    /* SERVICE ERROR */
+    function showServiceError(message) {
+        servicesLoaded = false;
+        serviceName.textContent = "Service Not Available";
+        serviceDescription.textContent = message;
+        servicePrice.textContent = "";
+        serviceStatus.textContent = "Unavailable";
+        serviceStatus.classList.remove("text-gray-500", "dark:text-gray-400");
+        serviceStatus.classList.add("text-red-600", "dark:text-red-400");
+        setSubmitButton();
+
+        if (typeof Swal !== "undefined") {
+            Swal.fire({
+                icon: "error",
+                title: "Service Not Available",
+                text: "Please return to the Services page and select another service.",
+                confirmButtonText: "View Services",
+                confirmButtonColor: "#2563eb",
+                allowOutsideClick: false
+            }).then(() => {
+                window.location.href = "/services";
+            });
+        } else {
+            window.location.href = "/services";
+        }
+    }
+
+    /* MOBILE INPUT */
+    customerMobile.addEventListener("input", function () {
+            this.value = this.value.replace(/\D/g, "").slice(0, 10);
+        }
+    );
+
+    /* DATE VALIDATION */
+    serviceDate.addEventListener("change", function () {
+            const today = getTodayDate();
+            if (this.value < today) {
+                this.value = "";
+                Swal.fire({
+                    icon: "warning",
+                    title: "Invalid Date",
+                    text: "Service date cannot be in the past.",
+                    confirmButtonColor: "#2563eb"
+                });
+            }
+        }
+    );
+
+    /*  REQUEST DATA */
+    function getRequestData() {
+        return {
+            customerName: customerName.value.trim(),
+            phone: customerMobile.value.trim(),
+            email: customerEmail.value.trim(),
+            address: serviceAddress.value.trim(),
+            serviceId: Number(serviceType.value),
+            preferredDate: `${serviceDate.value}T00:00:00`,
+            preferredTime: serviceTime.value,
+            message: additionalDetails.value.trim()
+        };
+    }
+
+    /* CREATE PAYMENT ORDER */
+    async function createPaymentOrder(requestData) {
+        const response = await fetch("/api/payments/create-order", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
+                    body: JSON.stringify(requestData)
+                }
+            );
+        let payment = {};
+        try {
+            payment = await response.json();
+        } catch (error) {
+            console.warn("Payment order response was not JSON.", error);
+        }
+
+        if (!response.ok) {
+            throw new Error(
+                payment.message || payment.error || "Unable to create payment order.");
+        }
+
+        if (!payment.razorpayOrderId) {
+            throw new Error("Razorpay order ID was not received from server.");
+        }
+
+        if (payment.amount === undefined || payment.amount === null) {
+            throw new Error("Payment amount was not received from server.");
+        }
+
+        return payment;
+    }
+
+    /* OPEN RAZORPAY */
+    function openRazorpayCheckout(payment, requestData) {
+        if (typeof Razorpay === "undefined") {
+            throw new Error("Razorpay Checkout failed to load.");
+        }
+
+        const amountInRupees = Number(payment.amount);
+        if (!Number.isFinite(amountInRupees) || amountInRupees <= 0) {
+            throw new Error("Invalid payment amount received.");
+        }
+
+        const options = {
+            key: RAZORPAY_KEY_ID,
+            amount: Math.round(amountInRupees * 100),
+            currency: payment.currency || "INR",
+            name: "Sanitization Management System",
+            description: selectedService?.name || payment.service?.name || "Sanitization Service",
+            order_id: payment.razorpayOrderId,
+
+            prefill: {
+                name: requestData.customerName,
+                email: requestData.email,
+                contact: requestData.phone
+            },
+
+            notes: {
+                serviceId: String(requestData.serviceId)
+            },
+
+            theme: {
+                color: "#2563eb"
+            },
+
+            handler:
+                async function (response) {
+                    await handleSuccessfulPayment(response, requestData);
+                },
+
+            modal: {
+                ondismiss:
+                    function () {
+                        paymentInProgress = false;
+                        setSubmitButton();
+                        Swal.fire({
+                            icon: "info",
+                            title: "Payment Cancelled",
+                            text: "No service request has been created.",
+                            confirmButtonColor: "#2563eb"
+                        });
+                    }
+            }
+        };
+
+        const razorpay = new Razorpay(options);
+
+        razorpay.on("payment.failed", function (response) {
+                console.error("Razorpay payment failed:", response.error);
+                paymentInProgress = false;
+                setSubmitButton();
+                Swal.fire({
+                    icon: "error",
+                    title: "Payment Failed",
+                    text: response.error?.description || "Your payment could not be completed.",
+                    confirmButtonColor: "#2563eb"
+                });
+            }
+        );
+        razorpay.open();
+    }
+
+    /* PAYMENT SUCCESS */
+    async function handleSuccessfulPayment(razorpayResponse, requestData) {
+        try {
+            Swal.fire({
+                title: "Verifying Payment...",
+                text: "Please wait. Do not close this page.",
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                didOpen: () => {
+                        Swal.showLoading();
+                }
+            });
+            await verifyPayment(razorpayResponse, requestData);
+        } catch (error) {
+            console.error("Post-payment processing error:", error);
+            Swal.fire({
+                icon: "error",
+                title: "Payment Verification Failed",
+                text: error.message || "Unable to verify your payment.",
+                confirmButtonColor: "#2563eb"
+            });
+            paymentInProgress = false;
+            setSubmitButton();
+        }
+    }
+
+    /* VERIFY PAYMENT */
+    async function verifyPayment(razorpayResponse, requestData) {
+        if (!razorpayResponse || !razorpayResponse.razorpay_order_id || !razorpayResponse.razorpay_payment_id || !razorpayResponse.razorpay_signature) {
+            throw new Error("Incomplete payment response received from Razorpay.");
+        }
+
+        const verifyParams = new URLSearchParams({
+                razorpayOrderId: razorpayResponse.razorpay_order_id,
+                razorpayPaymentId: razorpayResponse.razorpay_payment_id,
+                razorpaySignature: razorpayResponse.razorpay_signature
+            });
+
+        const response = await fetch(`/api/payments/verify?${verifyParams.toString()}`, {
+                    method: "POST",
+                    headers: {
+                        "Accept": "application/json"
+                    }
+                }
+            );
+
+        let payment = {};
+        try {
+            payment = await response.json();
+        } catch (error) {
+            console.warn("Payment verification response was not JSON.", error);
+        }
+
+        if (!response.ok) {
+            throw new Error(payment.message || payment.error || "Payment verification failed.");
+        }
+
+        if (!payment.status || String(payment.status).toUpperCase() !== "SUCCESS") {
+            throw new Error("Payment was not verified successfully.");
+        }
+
+        console.log("Payment verified successfully:", payment);
+
+        /* IMPORTANT Service request is created ONLY AFTER successful payment verification.  Attach the verified Razorpay order ID to the service request. */
+        const serviceRequestData ={...requestData, paymentOrderId: payment.razorpayOrderId || razorpayResponse.razorpay_order_id};
+        await createServiceRequest(serviceRequestData);
+    }
+
+    /* CREATE SERVICE REQUEST */
+    async function createServiceRequest(requestData) {
+        Swal.update({
+            title: "Creating Service Request...",
+            text: "Payment verified. Creating your service request."
+        });
+
+        const response = await fetch("/api/service-requests", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
+                    body: JSON.stringify(requestData)
+                }
+            );
+
+        let data = {};
+        try {
+            data = await response.json();
+        } catch (error) {
+            console.warn("Service request response was not JSON.", error);
+        }
+
+        if (!response.ok) {
+            throw new Error( data.message || data.error || "Payment was successful, but service request could not be created.");
+        }
+
+        if (!data.trackingId) {
+            throw new Error("Service request was created, but tracking ID was not received.");
+        }
+
+        Swal.close();
+        const status = data.status || "PENDING";
+        const result = await Swal.fire({
+                icon: "success",
+                title: "Payment Successful!",
+                html: `
+                <div class="text-center">
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Your sanitization service request has been submitted successfully.
+                    </p>
+                    <div class="mt-5 p-5 rounded-2xl bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800">
+                        <p class="text-xs uppercase tracking-wider font-semibold text-gray-500 dark:text-gray-400">Tracking ID</p>
+                        <p class="mt-2 text-2xl font-extrabold text-blue-600 dark:text-blue-400">
+                            ${escapeHtml(data.trackingId)}
+                        </p>
+                    </div>
+
+                    <p class="mt-4 text-sm text-gray-600 dark:text-gray-300">
+                        Status: <strong> ${escapeHtml(status)}</strong>
+                    </p>
+                </div>
+            `,
+                confirmButtonText: "Track Request",
+                showCancelButton: true,
+                cancelButtonText: "Close",
+                confirmButtonColor: "#2563eb",
+                allowOutsideClick: false
+            });
+
+        paymentInProgress = false;
+        if (result.isConfirmed) {
+            window.location.href = `/track-request?trackingId=${encodeURIComponent(data.trackingId)}`;
+            return;
+        }
+        resetAfterSuccess();
+    }
+
+    /*  RESET AFTER SUCCESS */
+    function resetAfterSuccess() {
+        form.reset();
+        serviceDate.min = getTodayDate();
+        serviceTime.selectedIndex = 0;
+        terms.checked = false;
+        serviceType.value = selectedServiceId || "";
+        paymentInProgress = false;
+        setSubmitButton();
+    }
+
+    /* FORM SUBMIT */
+    form.addEventListener("submit", async function (event) {
+            event.preventDefault();
+            if (paymentInProgress) {
+                return;
+            }
+
+            /* SERVICE */
+            if (!servicesLoaded || !serviceType.value) {
+                Swal.fire({
+                    icon: "warning",
+                    title: "Service Not Ready",
+                    text: "Please wait for the selected service to load.",
+                    confirmButtonColor: "#2563eb"
+                });
+                return;
+            }
+
+            /* FORM */
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            /* NAME */
+            if (customerName.value.trim().length < 2) {
+                Swal.fire({
+                    icon: "warning",
+                    title: "Invalid Name",
+                    text: "Please enter your full name.",
+                    confirmButtonColor: "#2563eb"
+                });
+                customerName.focus();
+                return;
+            }
+
+            /* MOBILE */
+            if (!/^[0-9]{10}$/.test(customerMobile.value.trim())) {
+                Swal.fire({
+                    icon: "warning",
+                    title: "Invalid Mobile Number",
+                    text: "Please enter a valid 10 digit mobile number.",
+                    confirmButtonColor: "#2563eb"
+                });
+                customerMobile.focus();
+                return;
+            }
+
+            /* DATE */
+            if (!serviceDate.value || serviceDate.value < getTodayDate()) {
+                Swal.fire({
+                    icon: "warning",
+                    title: "Invalid Date",
+                    text: "Please select today or a future date.",
+                    confirmButtonColor: "#2563eb"
+                });
+                serviceDate.focus();
+                return;
+            }
+
+            /* TIME */
+            if (!serviceTime.value) {
+                Swal.fire({
+                    icon: "warning",
+                    title: "Select Preferred Time",
+                    text: "Please select your preferred service time.",
+                    confirmButtonColor: "#2563eb"
+                });
+                serviceTime.focus();
+                return;
+            }
+
+        /* ADDRESS */
+            if (serviceAddress.value.trim().length < 10) {
+                Swal.fire({
+                    icon: "warning",
+                    title: "Invalid Address",
+                    text: "Please enter a complete service address.",
+                    confirmButtonColor: "#2563eb"
+                });
+                serviceAddress.focus();
+                return;
+            }
+
+            /* RAZORPAY */  //x rzp_test_Teqmc3JCUqg2qD
+            if (!RAZORPAY_KEY_ID || RAZORPAY_KEY_ID === "rzp_test_xxxxxxxxx"
+            ) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Razorpay Key Missing",
+                    text: "Please configure your Razorpay Test Key ID.",
+                    confirmButtonColor: "#2563eb"
+                });
+                return;
+            }
+
+            if (typeof Razorpay === "undefined") {
+                Swal.fire({
+                    icon: "error",
+                    title: "Payment System Unavailable",
+                    text: "Razorpay Checkout could not be loaded. Please refresh the page.",
+                    confirmButtonColor: "#2563eb"
+                });
+                return;
+            }
+
+
+            /* REQUEST DATA */
+            const requestData = getRequestData();
+            console.log("Service request data:", requestData);
+            paymentInProgress = true;
+            setSubmitButton(true, "Creating Payment...");
+            try {
+                /* Backend calculates the actual price using serviceId. Frontend NEVER sends price. */
+                const payment = await createPaymentOrder(requestData);
+                console.log("Payment order created:", payment);
+                setSubmitButton(true, "Opening Payment...");
+                openRazorpayCheckout(payment, requestData);
+            } catch (error) {
+                console.error("Payment order error:", error);
+                paymentInProgress = false;
+                Swal.fire({
+                    icon: "error",
+                    title: "Unable to Start Payment",
+                    text: error.message || "Something went wrong. Please try again.",
+                    confirmButtonColor: "#2563eb"
+                });
+
+                setSubmitButton();
+            }
+        }
+    );
+
+    /* RESET BUTTON */
+    form.addEventListener("reset", function () {
+            if (paymentInProgress) {
+                return;
+            }
+            setTimeout(() => {
+                serviceDate.min = getTodayDate();
+                serviceTime.selectedIndex = 0;
+                serviceType.value = selectedServiceId || "";
+                paymentInProgress = false;
+                setSubmitButton();
+            }, 0);
+        }
+    );
+
+    /* INITIALIZE */
+    loadSelectedService();
+</script>
+</body>
+</html>

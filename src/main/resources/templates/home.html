@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base :: parent(~{::#content}, ~{::title}, ~{::script})}">
+<head>
+    <title>Home | SANITIZATION MANAGEMENT SYSTEM</title>
+</head>
+<body id="content">
+<section>
+    <!-- HERO SECTION -->
+    <section class="relative min-h-[calc(100vh-4rem)] flex items-center overflow-hidden">
+        <!-- Animated Background -->
+        <div class="absolute inset-0 overflow-hidden">
+    <!-- Background Image 1 -->
+    <img th:src="@{/images/home-bg-02.webp}" alt="Professional sanitization service" class="hero-slide hero-slide-1">
+
+    <!-- Background Image 2 -->
+    <img th:src="@{/images/home-bg-03.webp}" alt="Professional cleaning service" class="hero-slide hero-slide-2">
+
+    <!-- Background Image 3 -->
+    <img th:src="@{/images/home-bg-04.webp}" alt="Sanitization service" class="hero-slide hero-slide-3">
+     
+    <!-- Background Image 4 -->
+    <img th:src="@{/images/home-bg-05.jpg}" alt="Sanitization service" class="hero-slide hero-slide-4">
+     
+    <!-- Background Image 5 -->
+    <img th:src="@{/images/home-bg-06.jpg}" alt="Sanitization service" class="hero-slide hero-slide-5">
+
+    <!-- Cinematic dark overlay -->
+    <div class="absolute inset-0 bg-black/55"></div>
+
+    <!-- Blue atmospheric light -->
+    <div class="hero-atmosphere"></div>
+
+    <!-- Moving shine -->
+    <div class="hero-shine"></div>
+        </div>
+        <!-- Gradient for text readability -->
+        <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-black/20"></div>
+        <!-- Hero Content -->
+        <div class="relative z-10 max-w-screen-xl mx-auto w-full px-6 sm:px-8 lg:px-12 py-24">
+            <div class="max-w-3xl">
+                <!-- Badge -->
+                <div class="inline-flex items-center gap-2 px-4 py-2 mb-6
+                            rounded-full
+                            bg-blue-500/15
+                            border border-blue-300/30
+                            backdrop-blur-sm">
+                    <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+                    <span class="text-sm font-semibold tracking-wide text-blue-200">
+                        PROFESSIONAL SANITIZATION SERVICES
+                    </span>
+                </div>
+
+                <!-- Heading -->
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl
+                           font-extrabold
+                           leading-tight
+                           text-white">
+                    A Cleaner Space.
+                    <br>
+                    <span class="text-blue-300">A Healthier Life.</span>
+                </h1>
+
+                <!-- Description -->
+                <p class="mt-6 max-w-2xl
+                          text-base sm:text-lg
+                          leading-relaxed
+                          text-gray-200">
+                    Professional sanitization solutions for homes, offices
+                    and vehicles. Book a service easily and keep your
+                    surroundings clean, safe and hygienic.
+                </p>
+
+                <!-- Buttons -->
+                <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                    <a th:href="@{/services}"
+                       class="inline-flex items-center justify-center gap-2
+                              px-7 py-3.5
+                              rounded-lg
+                              bg-blue-600
+                              hover:bg-blue-700
+                              text-white
+                              font-semibold
+                              shadow-lg shadow-blue-600/25
+                              transition-all duration-300
+                              hover:-translate-y-0.5">
+                        Explore Services
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+
+                    <a th:href="@{/track-request}"
+                       class="inline-flex items-center justify-center gap-2
+                              px-7 py-3.5
+                              rounded-lg
+                              border border-white/50
+                              bg-white/5
+                              backdrop-blur-sm
+                              text-white
+                              font-semibold
+                              hover:bg-white
+                              hover:text-gray-900
+                              transition-all duration-300">
+                        <i class="fa-solid fa-location-dot"></i>
+                        Track Request
+                    </a>
+                </div>
+
+                <!-- Trust Points -->
+                <div class="mt-10 flex flex-wrap gap-x-8 gap-y-4">
+                    <div class="flex items-center gap-2 text-gray-200">
+                        <i class="fa-solid fa-circle-check text-blue-300"></i>
+                        <span class="text-sm">Professional Service</span>
+                    </div>
+
+                    <div class="flex items-center gap-2 text-gray-200">
+                        <i class="fa-solid fa-circle-check text-blue-300"></i>
+                        <span class="text-sm">Easy Booking</span>
+                    </div>
+
+                    <div class="flex items-center gap-2 text-gray-200">
+                        <i class="fa-solid fa-circle-check text-blue-300"></i>
+                        <span class="text-sm">Reliable Support</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Scroll Indicator -->
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center text-white/70">
+            <span class="text-xs mb-2">Scroll to explore</span>
+            <i class="fa-solid fa-chevron-down animate-bounce"></i>
+        </div>
+    </section>
+
+    <!-- QUICK STATS -->
+    <section class="relative -mt-10 z-20 px-5">
+        <div class="max-w-screen-xl mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 rounded-2xl overflow-hidden bg-white dark:bg-gray-800 shadow-xl border border-gray-100 dark:border-gray-700">
+                <!-- Stat -->
+                <div class="p-6 text-center border-b sm:border-b-0 sm:border-r border-gray-200 dark:border-gray-700">
+                    <div class="text-3xl font-bold text-blue-600 dark:text-blue-400">500+</div>
+                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Services Completed</p>
+                </div>
+
+                <div class="p-6 text-center border-b lg:border-b-0 lg:border-r border-gray-200 dark:border-gray-700">
+                    <div class="text-3xl font-bold text-blue-600 dark:text-blue-400">3</div>
+                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Service Categories</p>
+                </div>
+
+                <div class="p-6 text-center border-b sm:border-b-0 sm:border-r border-gray-200 dark:border-gray-700">
+                    <div class="text-3xl font-bold text-blue-600 dark:text-blue-400">24/7</div>
+                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Request Tracking</p>
+                </div>
+
+                <div class="p-6 text-center">
+                    <div class="text-3xl font-bold text-blue-600 dark:text-blue-400">100%</div>
+                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Customer Focused</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES PREVIEW -->
+    <section class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-screen-xl mx-auto px-6">
+            <!-- Section Heading -->
+            <div class="text-center max-w-2xl mx-auto">
+                <span class="text-sm font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400">Our Services</span>
+                <h2 class="mt-2 text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">
+                    Sanitization Solutions For Every Space</h2>
+                <p class="mt-4 text-gray-600 dark:text-gray-400">
+                    Choose the right sanitization service for your
+                    home, vehicle or workplace.
+                </p>
+            </div>
+
+            <!-- Service Cards -->
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-7">
+                <!-- Home -->
+                <div class="group overflow-hidden rounded-2xl
+                            bg-white dark:bg-gray-800
+                            border border-gray-200 dark:border-gray-700
+                            shadow-sm hover:shadow-xl
+                            transition-all duration-300">
+                    <div class="relative h-56 overflow-hidden">
+                        <img th:src="@{/images/Home-Sanitization.webp}"
+                             alt="Home Sanitization"
+                             class="w-full h-full object-cover
+                                    group-hover:scale-105
+                                    transition duration-500">
+                        <div class="absolute inset-0 bg-black/20"></div>
+                        <span class="absolute top-4 left-4
+                                     px-3 py-1 rounded-full
+                                     bg-white/90
+                                     text-sm font-semibold text-gray-800">
+                            Home
+                        </span>
+                    </div>
+
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Home Sanitization</h3>
+                        <p class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
+                            Keep your living space clean, fresh and hygienic
+                            with professional sanitization.
+                        </p>
+                        <a th:href="@{/service-request}"
+                           class="inline-flex items-center gap-2 mt-5
+                                  text-blue-600 dark:text-blue-400
+                                  font-semibold
+                                  hover:gap-3 transition-all">
+                            Request Service
+                            <i class="fa-solid fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Car -->
+                <div class="group overflow-hidden rounded-2xl
+                            bg-white dark:bg-gray-800
+                            border border-gray-200 dark:border-gray-700
+                            shadow-sm hover:shadow-xl
+                            transition-all duration-300">
+                    <div class="relative h-56 overflow-hidden">
+                        <img th:src="@{/images/Car-Sanitization-01.webp}"
+                             alt="Car Sanitization"
+                             class="w-full h-full object-cover
+                                    group-hover:scale-105
+                                    transition duration-500">
+                        <div class="absolute inset-0 bg-black/20"></div>
+                        <span class="absolute top-4 left-4
+                                     px-3 py-1 rounded-full
+                                     bg-white/90
+                                     text-sm font-semibold text-gray-800">
+                            Vehicle
+                        </span>
+                    </div>
+
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Car Sanitization</h3>
+                        <p class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
+                            A cleaner and fresher vehicle interior for
+                            comfortable everyday travel.
+                        </p>
+                        <a th:href="@{/service-request}"
+                           class="inline-flex items-center gap-2 mt-5
+                                  text-blue-600 dark:text-blue-400
+                                  font-semibold
+                                  hover:gap-3 transition-all">
+                            Request Service
+                            <i class="fa-solid fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Office -->
+                <div class="group overflow-hidden rounded-2xl
+                            bg-white dark:bg-gray-800
+                            border border-gray-200 dark:border-gray-700
+                            shadow-sm hover:shadow-xl
+                            transition-all duration-300">
+                    <div class="relative h-56 overflow-hidden">
+                        <img th:src="@{/images/Office-Sanitization.webp}"
+                             alt="Office Sanitization"
+                             class="w-full h-full object-cover
+                                    group-hover:scale-105
+                                    transition duration-500">
+                        <div class="absolute inset-0 bg-black/20"></div>
+                        <span class="absolute top-4 left-4
+                                     px-3 py-1 rounded-full
+                                     bg-white/90
+                                     text-sm font-semibold text-gray-800">
+                            Office
+                        </span>
+                    </div>
+
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Office Sanitization</h3>
+                        <p class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
+                            Maintain a clean and hygienic workplace for
+                            employees and visitors.
+                        </p>
+
+                        <a th:href="@{/service-request}"
+                           class="inline-flex items-center gap-2 mt-5
+                                  text-blue-600 dark:text-blue-400
+                                  font-semibold
+                                  hover:gap-3 transition-all">
+                            Request Service
+                            <i class="fa-solid fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View All -->
+            <div class="text-center mt-10">
+                <a th:href="@{/services}"
+                   class="inline-flex items-center gap-2
+                          px-6 py-3
+                          rounded-lg
+                          border border-blue-600
+                          text-blue-600
+                          dark:border-blue-400
+                          dark:text-blue-400
+                          hover:bg-blue-600
+                          hover:text-white
+                          dark:hover:bg-blue-500
+                          dark:hover:text-white
+                          transition">
+                    View All Services
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section class="py-20 bg-white dark:bg-gray-800">
+        <div class="max-w-screen-xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-14 items-center">
+                <!-- Image -->
+                <div class="relative">
+                    <div class="rounded-2xl overflow-hidden shadow-xl">
+                        <img th:src="@{/images/home-bg-02.webp}"
+                             alt="Sanitization service"
+                             class="w-full h-[420px] object-cover">
+                    </div>
+
+                    <!-- Floating Card -->
+                    <div class="absolute -bottom-6 -right-3 sm:right-8
+                                bg-white dark:bg-gray-900
+                                rounded-xl shadow-xl
+                                border border-gray-100 dark:border-gray-700
+                                p-5">
+                        <div class="flex items-center gap-3">
+                            <div class="w-11 h-11 rounded-full
+                                        bg-green-100 dark:bg-green-900/30
+                                        flex items-center justify-center">
+                                <i class="fa-solid fa-shield-halved text-green-600 dark:text-green-400"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-gray-900 dark:text-white">Safe & Hygienic</p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">Clean environment</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div>
+                    <span class="text-sm font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+                        Why Choose Us
+                    </span>
+                    <h2 class="mt-2 text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">
+                        Simple, Reliable & Professional
+                    </h2>
+                    <p class="mt-5 text-gray-600 dark:text-gray-400 leading-relaxed">
+                        Our sanitization management system makes it easy
+                        to request services, monitor your request and
+                        stay informed throughout the process.
+                    </p>
+
+                    <!-- Features -->
+                    <div class="mt-8 space-y-5">
+                        <div class="flex gap-4">
+                            <div class="shrink-0 w-11 h-11 rounded-lg
+                                        bg-blue-100 dark:bg-blue-900/30
+                                        flex items-center justify-center">
+                                <i class="fa-solid fa-calendar-check text-blue-600 dark:text-blue-400"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-900 dark:text-white">Easy Service Booking</h3>
+                                <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                                    Submit your sanitization request through
+                                    a simple and convenient form.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="shrink-0 w-11 h-11 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
+                                <i class="fa-solid fa-location-dot text-blue-600 dark:text-blue-400"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-900 dark:text-white">Track Your Request</h3>
+                                <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                                    Check the current status of your
+                                    sanitization request anytime.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="shrink-0 w-11 h-11 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
+                                <i class="fa-solid fa-headset text-blue-600 dark:text-blue-400"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-900 dark:text-white">Customer Support</h3>
+                                <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                                    Get assistance whenever you need help
+                                    with your service request.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-screen-xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto">
+                <span class="text-sm font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+                    How It Works
+                </span>
+                <h2 class="mt-2 text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">
+                    Get Sanitization Service in 3 Simple Steps
+                </h2>
+            </div>
+
+            <div class="mt-14 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="relative text-center">
+                    <div class="mx-auto w-16 h-16 rounded-full
+                                bg-blue-600
+                                flex items-center justify-center
+                                text-white text-xl font-bold
+                                shadow-lg shadow-blue-600/20">
+                        1
+                    </div>
+
+                    <h3 class="mt-5 text-xl font-bold text-gray-900 dark:text-white">Choose a Service</h3>
+                    <p class="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+                        Select the sanitization service that fits
+                        your requirements.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative text-center">
+                    <div class="mx-auto w-16 h-16 rounded-full
+                                bg-blue-600
+                                flex items-center justify-center
+                                text-white text-xl font-bold
+                                shadow-lg shadow-blue-600/20">2
+                    </div>
+
+                    <h3 class="mt-5 text-xl font-bold text-gray-900 dark:text-white">Submit Request</h3>
+                    <p class="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+                        Provide your details and preferred service
+                        date through our request form.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative text-center">
+                    <div class="mx-auto w-16 h-16 rounded-full
+                                bg-blue-600
+                                flex items-center justify-center
+                                text-white text-xl font-bold
+                                shadow-lg shadow-blue-600/20">
+                        3
+                    </div>
+                    <h3 class="mt-5 text-xl font-bold text-gray-900 dark:text-white">Track & Relax</h3>
+                    <p class="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+                        Track your request and stay updated about
+                        its progress.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="relative overflow-hidden">
+        <div class="absolute inset-0 bg-blue-700"></div>
+        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_top_right,_white,_transparent_45%)]"></div>
+        <div class="relative max-w-screen-xl mx-auto px-6 py-20 text-center">
+            <h2 class="text-3xl sm:text-4xl font-bold text-white">Ready to Make Your Space Cleaner?</h2>
+            <p class="mt-4 max-w-2xl mx-auto text-blue-100">
+                Choose a service and submit your sanitization request
+                in just a few simple steps.
+            </p>
+
+            <div class="mt-8 flex flex-col sm:flex-row justify-center gap-4">
+                <a th:href="@{/services}"
+                   class="inline-flex items-center justify-center gap-2
+                          px-7 py-3.5 rounded-lg
+                          bg-white text-blue-700
+                          font-semibold
+                          hover:bg-gray-100
+                          transition">
+                    Get Started
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+                <a th:href="@{/contact}"
+                   class="inline-flex items-center justify-center gap-2
+                          px-7 py-3.5 rounded-lg
+                          border border-white/60
+                          text-white
+                          font-semibold
+                          hover:bg-white/10
+                          transition">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
+</section>
+<script>
+    console.log("Home page loaded");
+</script>
+</body>
+</html>

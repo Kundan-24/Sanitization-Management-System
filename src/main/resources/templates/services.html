@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base :: parent(~{::section}, ~{::title}, ~{::script})}">
+<head>
+    <title>Our Services - Sanitization Management System</title>
+</head>
+<body>
+<section>
+    <!-- PREMIUM SERVICES PAGE -->
+    <div class="relative overflow-hidden
+                bg-slate-50
+                dark:bg-gray-950
+                min-h-[calc(100vh-4rem)]
+                py-12 sm:py-16">
+
+        <!-- BACKGROUND EFFECTS -->
+        <div class="absolute -top-40 -right-40
+                    w-96 h-96
+                    rounded-full
+                    bg-blue-500/10
+                    blur-3xl
+                    pointer-events-none">
+        </div>
+
+        <div class="absolute top-[40%] -left-40
+                    w-96 h-96
+                    rounded-full
+                    bg-cyan-500/10
+                    blur-3xl
+                    pointer-events-none">
+        </div>
+
+        <div class="absolute bottom-0 right-1/4
+                    w-72 h-72
+                    rounded-full
+                    bg-indigo-500/5
+                    blur-3xl
+                    pointer-events-none">
+        </div>
+
+        <div class="relative max-w-7xl mx-auto
+                    px-4 sm:px-6 lg:px-8">
+
+            <!-- HERO -->
+            <div class="relative overflow-hidden
+                        rounded-[2rem]
+                        bg-gradient-to-br
+                        from-slate-950
+                        via-blue-950
+                        to-cyan-900
+                        shadow-2xl
+                        mb-14">
+
+                <!-- Hero glow -->
+                <div class="absolute
+                            -top-24
+                            -right-24
+                            w-80 h-80
+                            rounded-full
+                            bg-cyan-400/20
+                            blur-3xl">
+                </div>
+
+                <div class="absolute
+                            -bottom-32
+                            -left-20
+                            w-80 h-80
+                            rounded-full
+                            bg-blue-500/20
+                            blur-3xl">
+                </div>
+
+                <div class="relative
+                            grid
+                            lg:grid-cols-2
+                            gap-10
+                            items-center
+                            px-6 sm:px-10
+                            lg:px-14
+                            py-12 sm:py-16">
+
+                    <!-- HERO TEXT -->
+                    <div>
+                        <div class="inline-flex
+                                    items-center
+                                    gap-2
+                                    px-4 py-2
+                                    rounded-full
+                                    bg-white/10
+                                    border border-white/10
+                                    backdrop-blur-md
+                                    text-blue-200
+                                    text-xs sm:text-sm
+                                    font-semibold">
+
+                            <span class="w-2 h-2
+                                         rounded-full
+                                         bg-cyan-400
+                                         shadow-[0_0_10px_rgba(34,211,238,0.8)]">
+                            </span>
+                            PROFESSIONAL SANITIZATION
+                        </div>
+
+                        <h1 class="mt-6
+                                   text-4xl sm:text-5xl lg:text-6xl
+                                   font-black
+                                   leading-tight
+                                   tracking-tight
+                                   text-white">
+                            Cleaner Spaces.
+                            <span class="block
+                                         text-transparent
+                                         bg-clip-text
+                                         bg-gradient-to-r
+                                         from-cyan-300
+                                         to-blue-300">
+                                Healthier Living.
+                            </span>
+                        </h1>
+
+                        <p class="mt-6
+                                  max-w-xl
+                                  text-base sm:text-lg
+                                  leading-7
+                                  text-blue-100/80">
+                            Professional sanitization solutions for
+                            homes, offices, vehicles and commercial
+                            spaces. Choose a service and book it
+                            in just a few clicks.
+                        </p>
+
+                        <!-- Hero buttons -->
+                        <div class="mt-8
+                                    flex flex-wrap
+                                    gap-3">
+                            <a href="#services"
+                               class="inline-flex
+                                      items-center
+                                      gap-2
+                                      px-5 py-3
+                                      rounded-xl
+                                      bg-white
+                                      text-blue-800
+                                      font-bold
+                                      text-sm
+                                      shadow-xl
+                                      hover:bg-blue-50
+                                      transition-all
+                                      duration-300
+                                      hover:-translate-y-1">
+                                Explore Services
+                                <i class="fa-solid fa-arrow-down"></i>
+                            </a>
+
+                            <a href="/track-request"
+                               class="inline-flex
+                                      items-center
+                                      gap-2
+                                      px-5 py-3
+                                      rounded-xl
+                                      bg-white/10
+                                      border border-white/15
+                                      text-white
+                                      font-semibold
+                                      text-sm
+                                      backdrop-blur-md
+                                      hover:bg-white/20
+                                      transition-all
+                                      duration-300">
+                                <i class="fa-solid fa-location-dot"></i>
+                                Track Request
+                            </a>
+                        </div>
+
+                        <!-- Trust -->
+                        <div class="mt-8
+                                    flex flex-wrap
+                                    gap-5
+                                    text-sm
+                                    text-blue-100/80">
+                            <span class="flex items-center gap-2">
+                                <i class="fa-solid fa-circle-check
+                                          text-cyan-300">
+                                </i>
+                                Safe & Hygienic
+                            </span>
+
+                            <span class="flex items-center gap-2">
+                                <i class="fa-solid fa-circle-check
+                                          text-cyan-300">
+                                </i>
+                                Professional Service
+                            </span>
+
+                            <span class="flex items-center gap-2">
+                                <i class="fa-solid fa-circle-check
+                                          text-cyan-300">
+                                </i>
+                                Easy Booking
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- HERO VISUAL -->
+                    <div class="hidden lg:flex
+                                justify-center
+                                items-center">
+                        <div class="relative w-80 h-80">
+                            <!-- Outer ring -->
+                            <div class="absolute inset-4
+                                        rounded-full
+                                        border border-cyan-300/20
+                                        animate-[spin_20s_linear_infinite]">
+                            </div>
+
+                            <div class="absolute inset-10
+                                        rounded-full
+                                        border border-blue-300/20
+                                        animate-[spin_15s_linear_infinite_reverse]">
+                            </div>
+
+                            <!-- Main glass -->
+                            <div class="absolute
+                                        inset-16
+                                        rounded-[2rem]
+                                        bg-white/10
+                                        border border-white/15
+                                        backdrop-blur-xl
+                                        shadow-2xl
+                                        flex items-center
+                                        justify-center">
+
+                                <div class="text-center">
+                                    <div class="mx-auto
+                                                w-20 h-20
+                                                rounded-2xl
+                                                bg-gradient-to-br
+                                                from-cyan-300
+                                                to-blue-500
+                                                flex items-center
+                                                justify-center
+                                                shadow-xl
+                                                shadow-cyan-500/20">
+
+                                        <i class="fa-solid
+                                                  fa-spray-can-sparkles
+                                                  text-4xl
+                                                  text-white">
+                                        </i>
+                                    </div>
+
+                                    <p class="mt-5
+                                              text-white
+                                              font-bold">
+                                        Fresh & Clean
+                                    </p>
+                                    <p class="mt-1
+                                              text-xs
+                                              text-blue-100/70">
+                                        Professional Care
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Floating icon 1 -->
+                            <div class="absolute
+                                        top-8 right-4
+                                        w-14 h-14
+                                        rounded-2xl
+                                        bg-white/10
+                                        border border-white/10
+                                        backdrop-blur-lg
+                                        flex items-center
+                                        justify-center
+                                        shadow-xl">
+
+                                <i class="fa-solid fa-shield-halved
+                                          text-xl
+                                          text-cyan-300">
+                                </i>
+                            </div>
+
+                            <!-- Floating icon 2 -->
+                            <div class="absolute
+                                        bottom-10 left-2
+                                        w-14 h-14
+                                        rounded-2xl
+                                        bg-white/10
+                                        border border-white/10
+                                        backdrop-blur-lg
+                                        flex items-center
+                                        justify-center
+                                        shadow-xl">
+                                <i class="fa-solid fa-broom
+                                          text-xl
+                                         text-blue-300">
+                                </i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SERVICE HEADER -->
+            <div id="services" class="scroll-mt-24">
+
+                <div class="flex flex-col
+                            sm:flex-row
+                            sm:items-end
+                            sm:justify-between
+                            gap-5
+                            mb-8">
+
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="w-8 h-1
+                                         rounded-full
+                                         bg-blue-600">
+                            </span>
+
+                            <span class="text-xs
+                                         font-bold
+                                         uppercase
+                                         tracking-[0.2em]
+                                         text-blue-600
+                                         dark:text-blue-400">
+                                What We Offer
+                            </span>
+                        </div>
+
+                        <h2 class="mt-3
+                                   text-3xl sm:text-4xl
+                                   font-black
+                                   text-gray-900
+                                   dark:text-white">
+                            Our Services
+                        </h2>
+
+                        <p class="mt-2
+                                  text-gray-500
+                                  dark:text-gray-400">
+                            Choose the right sanitization solution
+                            for your space.
+                        </p>
+                    </div>
+
+                    <!-- ACTIONS -->
+                    <div class="flex items-center gap-3">
+                        <div id="serviceCount"
+                             class="hidden
+                                    px-4 py-2.5
+                                    rounded-xl
+                                    bg-white
+                                    dark:bg-gray-800
+                                    border
+                                    border-gray-200
+                                    dark:border-gray-700
+                                    text-sm
+                                    font-semibold
+                                    text-gray-600
+                                    dark:text-gray-300
+                                    shadow-sm">
+                            0 Services
+                        </div>
+
+                        <button id="viewAllBtn" type="button"
+                                class="hidden
+                                       items-center
+                                       gap-2
+                                       px-4 py-2.5
+                                       rounded-xl
+                                       bg-gray-900
+                                       dark:bg-white
+                                       text-white
+                                       dark:text-gray-900
+                                       text-sm
+                                       font-bold
+                                       shadow-lg
+                                       hover:-translate-y-0.5
+                                       transition-all
+                                       duration-300">
+                            <i class="fa-solid fa-grid-2"></i>
+                            <span>View All Services</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- SERVICE GRID -->
+                <div id="servicesContainer"
+                     class="grid grid-cols-1
+                            md:grid-cols-2
+                            lg:grid-cols-3
+                            gap-6">
+
+                    <!-- Loading -->
+                    <div class="md:col-span-2
+                                lg:col-span-3
+                                py-20
+                                text-center">
+                        <div class="relative
+                                    w-14 h-14
+                                    mx-auto">
+                            <div class="absolute inset-0
+                                        rounded-full
+                                        border-4
+                                        border-blue-100
+                                        dark:border-blue-900">
+                            </div>
+                            <div class="absolute inset-0
+                                        rounded-full
+                                        border-4
+                                        border-transparent
+                                        border-t-blue-600
+                                        animate-spin">
+                            </div>
+                        </div>
+                        <p class="mt-5
+                                  text-sm
+                                  text-gray-500
+                                  dark:text-gray-400">Loading services...
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOTTOM CTA -->
+            <div class="mt-16
+                        overflow-hidden
+                        rounded-[2rem]
+                        border
+                        border-blue-100
+                        dark:border-blue-900/40
+                        bg-white
+                        dark:bg-gray-900
+                        shadow-xl">
+
+                <div class="grid
+                            md:grid-cols-[1fr_auto]
+                            items-center
+                            gap-8
+                            px-6 sm:px-10
+                            py-8 sm:py-10">
+
+                    <div class="flex
+                                items-start
+                                gap-4">
+                        <div class="shrink-0
+                                    w-14 h-14
+                                    rounded-2xl
+                                    bg-blue-100
+                                    dark:bg-blue-900/30
+                                    flex items-center
+                                    justify-center">
+
+                            <i class="fa-solid fa-headset
+                                      text-xl
+                                      text-blue-600
+                                      dark:text-blue-400">
+                            </i>
+                        </div>
+
+
+                        <div>
+                            <h3 class="text-xl
+                                       font-bold
+                                       text-gray-900
+                                       dark:text-white">
+                                Need help choosing a service?
+                            </h3>
+
+                            <p class="mt-1
+                                      text-sm
+                                      text-gray-500
+                                      dark:text-gray-400">
+                                Select a service and submit your
+                                request. Our team will handle the rest.
+                            </p>
+                        </div>
+                    </div>
+
+                    <a href="/service-request"
+                       class="inline-flex
+                              justify-center
+                              items-center
+                              gap-2
+                              px-6 py-3
+                              rounded-xl
+                              bg-gradient-to-r
+                              from-blue-600
+                              to-cyan-500
+                              text-white
+                              font-bold
+                              text-sm
+                              shadow-lg
+                              shadow-blue-500/20
+                              hover:shadow-blue-500/40
+                              hover:-translate-y-1
+                              transition-all
+                              duration-300">
+                        Request Service
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- PAGE SCRIPT -->
+<script>
+    console.log("SERVICES PAGE SCRIPT STARTED");
+    const container = document.getElementById("servicesContainer");
+    const viewAllBtn = document.getElementById("viewAllBtn");
+    const serviceCount = document.getElementById("serviceCount");
+    let allServices = [];
+    let showAllServices = false;
+    const INITIAL_SERVICE_LIMIT = 6;
+    if (container) {
+        loadServices();
+    } else {
+        console.error("servicesContainer not found!");
+    }
+
+    /* LOAD SERVICES */
+    async function loadServices() {
+        try {
+            const response = await fetch("/api/services/active", {
+                    method: "GET",
+                    headers: {
+                        "Accept": "application/json"
+                    },
+                    cache: "no-cache"
+                });
+
+            if (!response.ok) {
+                throw new Error("API returned " + response.status);
+            }
+
+            const services = await response.json();
+            if (!Array.isArray(services)) {
+                throw new Error("Invalid services response");
+            }
+
+            allServices = services;
+
+            /* SERVICE COUNT */
+            serviceCount.textContent = services.length + (services.length === 1 ? " Service" : " Services");
+            serviceCount.classList.remove("hidden");
+
+            /* VIEW ALL */
+            if (services.length > INITIAL_SERVICE_LIMIT) {
+                viewAllBtn.classList.remove("hidden");
+                viewAllBtn.classList.add("inline-flex");
+            }
+
+            if (services.length === 0) {
+                showEmptyState();
+                return;
+            }
+            renderServices();
+        } catch (error) {
+            console.error("SERVICE LOAD ERROR:", error);
+            showErrorState();
+        }
+    }
+
+    /*  RENDER SERVICES */
+    function renderServices() {
+        container.innerHTML = "";
+        const servicesToShow = showAllServices ? allServices : allServices.slice(0, INITIAL_SERVICE_LIMIT);
+        servicesToShow.forEach(function (service, index) {
+            const card = document.createElement("div");
+            card.className = "group relative";
+            const image = service.image && service.image.trim() !== "" ? service.image : "/images/default-service.webp";
+            const description = service.description && service.description.trim() !== "" ? service.description : "Professional sanitization solutions designed to maintain a clean, hygienic and healthier environment.";
+            const price = Number(service.price || 0).toLocaleString("en-IN", {
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 2
+                });
+
+            card.innerHTML = `
+            <article class="
+                h-full
+                overflow-hidden
+                rounded-3xl
+                bg-white
+                dark:bg-gray-900
+                border
+                border-gray-200
+                dark:border-gray-800
+                shadow-sm
+                hover:shadow-2xl
+                transition-all
+                duration-500
+                group-hover:-translate-y-2
+                flex
+                flex-col
+            ">
+
+                <!-- IMAGE -->
+                <div class="
+                    relative
+                    h-64
+                    overflow-hidden
+                ">
+
+                    <img
+                        src="${escapeHtml(image)}"
+                        alt="${escapeHtml(service.name)}"
+                        class="
+                            w-full
+                            h-full
+                            object-cover
+                            transition-transform
+                            duration-700
+                            group-hover:scale-110
+                        "
+                        onerror="
+                            this.onerror=null;
+                            this.src='/images/default-service.webp';
+                        "
+                    >
+
+                    <!-- IMAGE OVERLAY -->
+                    <div class="
+                        absolute
+                        inset-0
+                        bg-gradient-to-t
+                        from-black/75
+                        via-black/15
+                        to-transparent
+                    "></div>
+
+                    <!-- SERVICE NUMBER -->
+                    <div class="
+                        absolute
+                        top-4
+                        left-4
+                        w-10
+                        h-10
+                        rounded-xl
+                        bg-white/90
+                        dark:bg-gray-900/90
+                        backdrop-blur-md
+                        flex
+                        items-center
+                        justify-center
+                        text-sm
+                        font-black
+                        text-blue-600
+                        dark:text-blue-400
+                        shadow-lg
+                    ">
+                        ${String(index + 1).padStart(2, "0")}
+                    </div>
+
+                    <!-- AVAILABILITY -->
+                    <div class="
+                        absolute
+                        top-4
+                        right-4
+                        inline-flex
+                        items-center
+                        gap-2
+                        px-3
+                        py-1.5
+                        rounded-full
+                        bg-emerald-500/90
+                        backdrop-blur-md
+                        text-white
+                        text-xs
+                        font-semibold
+                        shadow-lg
+                    ">
+                        <span class="
+                            w-1.5
+                            h-1.5
+                            rounded-full
+                            bg-white
+                        "></span>
+
+                        Available
+                    </div>
+
+                    <!-- SERVICE NAME -->
+                    <div class="
+                        absolute
+                        bottom-5
+                        left-5
+                        right-5
+                    ">
+                        <h3 class="
+                            text-xl
+                            font-extrabold
+                            text-white
+                            drop-shadow-lg
+                            line-clamp-2
+                        ">
+                            ${escapeHtml(service.name)}
+                        </h3>
+                    </div>
+
+                </div>
+
+
+                <!-- CONTENT -->
+                <div class="
+                    p-6
+                    flex
+                    flex-col
+                    flex-1
+                ">
+
+                    <!-- PRICE -->
+                    <div class="
+                        flex
+                        items-end
+                        justify-between
+                        gap-4
+                        pb-5
+                        border-b
+                        border-gray-100
+                        dark:border-gray-800
+                    ">
+
+                        <div>
+
+                            <p class="
+                                text-xs
+                                font-semibold
+                                uppercase
+                                tracking-wider
+                                text-gray-500
+                                dark:text-gray-400
+                            ">
+                                Service Price
+                            </p>
+
+                            <div class="
+                                mt-1
+                                flex
+                                items-baseline
+                                gap-1
+                            ">
+
+                                <span class="
+                                    text-sm
+                                    font-semibold
+                                    text-gray-500
+                                    dark:text-gray-400
+                                ">
+                                    ₹
+                                </span>
+
+                                <span class="
+                                    text-3xl
+                                    font-black
+                                    text-gray-900
+                                    dark:text-white
+                                ">
+                                    ${price}
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="
+                            inline-flex
+                            items-center
+                            gap-1.5
+                            px-3
+                            py-1.5
+                            rounded-lg
+                            bg-blue-50
+                            dark:bg-blue-900/20
+                            text-blue-600
+                            dark:text-blue-400
+                            text-xs
+                            font-semibold
+                        ">
+
+                            <i class="fa-solid fa-shield-halved"></i>
+
+                            Professional
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- DESCRIPTION -->
+                    <p class="
+                        mt-5
+                        text-sm
+                        leading-6
+                        text-gray-600
+                        dark:text-gray-400
+                        line-clamp-3
+                        min-h-[72px]
+                    ">
+                        ${escapeHtml(description)}
+                    </p>
+
+
+                    <!-- SERVICE FEATURES -->
+                    <div class="
+                        mt-5
+                        grid
+                        grid-cols-2
+                        gap-3
+                    ">
+
+                        <div class="
+                            flex
+                            items-center
+                            gap-2
+                            text-xs
+                            font-medium
+                            text-gray-600
+                            dark:text-gray-400
+                        ">
+                            <span class="
+                                w-7
+                                h-7
+                                rounded-lg
+                                bg-emerald-50
+                                dark:bg-emerald-900/20
+                                flex
+                                items-center
+                                justify-center
+                            ">
+                                <i class="
+                                    fa-solid
+                                    fa-shield-halved
+                                    text-emerald-600
+                                    dark:text-emerald-400
+                                "></i>
+                            </span>
+                            Safe & Hygienic
+                        </div>
+
+                        <div class=" flex items-center gap-2 text-xs font-medium text-gray-600 dark:text-gray-400">
+                            <span class=" w-7 h-7 rounded-lg bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center">
+                                <i class=" fa-solid fa-user-shield text-blue-600 dark:text-blue-400"></i>
+                            </span>
+                            Trained Team
+                        </div>
+                    </div>
+                    <!-- DIVIDER -->
+                    <div class=" mt-6 mb-5 h-px bg-gray-100 dark:bg-gray-800"></div>
+
+                    <!-- CTA -->
+                    <a href="/service-request?serviceId=${service.id}"
+                        class=" mt-auto w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-gray-900 dark:bg-white text-white
+                            dark:text-gray-900 text-sm font-bold transition-all duration-300 hover:bg-blue-600 dark:hover:bg-blue-500 dark:hover:text-white hover:shadow-lg group/btn">
+                        Book This Service
+                        <i class="fa-solid fa-arrow-right transition-transform duration-300 group-hover/btn:translate-x-1"></i>
+                    </a>
+                </div>
+            </article>
+        `;
+            container.appendChild(card);
+        });
+        updateViewAllButton();
+    }
+
+    /* VIEW ALL */
+    viewAllBtn.addEventListener("click", function () {
+            showAllServices = !showAllServices;
+            renderServices();
+            if (showAllServices) {
+                document
+                    .getElementById("services")
+                    .scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+            }
+        }
+    );
+
+    function updateViewAllButton() {
+        if (
+            allServices.length <=
+            INITIAL_SERVICE_LIMIT
+        ) {
+            viewAllBtn.classList.add("hidden");
+            return;
+        }
+        viewAllBtn.classList.remove("hidden");
+        viewAllBtn.classList.add("inline-flex");
+        const icon = viewAllBtn.querySelector("i");
+        const text = viewAllBtn.querySelector("span");
+        if (showAllServices) {
+            icon.className = "fa-solid fa-chevron-up";
+            text.textContent = "Show Less";
+        } else {
+            icon.className = "fa-solid fa-grid-2";
+            text.textContent = "View All Services";
+        }
+    }
+    /* EMPTY STATE */
+    function showEmptyState() {
+        container.innerHTML = `
+            <div class="md:col-span-2 lg:col-span-3 py-20 text-center">
+                <div class="w-20 h-20 mx-auto rounded-2xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
+                    <i class=" fa-solid fa-spray-can-sparkles text-3xl text-blue-600 dark:text-blue-400"></i>
+                </div>
+                <h3 class=" mt-6 text-2xl font-black text-gray-900 dark:text-white">No Services Available</h3>
+                <p class=" mt-2 text-gray-500 dark:text-gray-400">
+                    No active sanitization services
+                    are currently available.
+                </p>
+            </div>
+        `;
+    }
+
+    /* ERROR */
+    function showErrorState() {
+        container.innerHTML = `
+            <div class=" md:col-span-2 lg:col-span-3 py-20 text-center">
+                <div class=" w-20 h-20 mx-auto rounded-2xl bg-red-100 dark:bg-red-900/30 flex items-center justify-center">
+                    <i class=" fa-solid fa-triangle-exclamation text-3xl text-red-600 dark:text-red-400"></i>
+                </div>
+                <h3 class=" mt-6 text-2xl font-black text-gray-900 dark:text-white"> Unable to Load Services</h3>
+                <p class=" mt-2 text-gray-500 dark:text-gray-400"> Please refresh the page and try again.</p>
+                <button
+                    onclick="loadServices()"
+                    class=" mt-6 inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold transition">
+                    <i class="fa-solid fa-rotate-right"></i>
+                    Try Again
+                </button>
+            </div>
+        `;
+    }
+
+    /* ESCAPE HTML */
+    function escapeHtml(value) {
+        const div = document.createElement("div");
+        div.textContent = value ?? "";
+        return div.innerHTML;
+    }
+</script>
+</body>
+</html>

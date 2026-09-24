@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" th:fragment="parent(content,title,script)" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            (function () {
+                const theme = localStorage.getItem("theme");
+                if (theme === "dark") {
+                    document.documentElement.classList.add("dark");
+                } else {
+                    document.documentElement.classList.remove("dark");
+                }
+            })();
+        </script>
+        <title th:replace="${title}">SANITIZATION MANAGEMENT SYSTEM</title>
+        <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
+        <!-- font awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- Tailwind output -->
+        <link rel="stylesheet" th:href="@{'/css/output.css'}">
+        <!-- Custom CSS -->
+        <link rel="stylesheet" th:href="@{'/css/style.css'}">
+    </head>
+    <body class="min-h-screen flex flex-col overflow-x-hidden bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+        <!--  common header  -->
+        <div>
+            <div th:replace="~{navbar :: navbar}"></div>
+        </div>
+
+        <!--Main Content-->
+        <main class="p-4 pt-24">
+            <section th:replace="${content}"></section>
+        </main>
+
+        <!--common footer-->
+        <footer class="relative mt-auto overflow-hidden bg-gray-950 text-gray-300">
+            <!-- Decorative Glow -->
+            <div class="absolute -top-32 -right-32 w-80 h-80 rounded-full bg-blue-600/10 blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-32 -left-32 w-80 h-80 rounded-full bg-cyan-500/10 blur-3xl pointer-events-none"></div>
+
+            <!-- Main Footer -->
+            <div class="relative max-w-screen-xl mx-auto px-6 sm:px-8 lg:px-12 py-14">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
+                    <!-- ================= BRAND ================= -->
+                    <div class="lg:col-span-1">
+                        <!-- Brand -->
+                        <a th:href="@{/}" class="inline-flex items-center gap-3 group">
+                            <!-- Logo -->
+                            <div class="relative w-11 h-11 rounded-xl bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-400 flex items-center justify-center
+                                shadow-lg shadow-blue-500/20 overflow-hidden transition-transform duration-300 group-hover:scale-105">
+                                <div class="absolute inset-0 bg-gradient-to-br from-white/25 via-transparent to-transparent"></div>
+                                <img th:src="@{/images/logo_01.jpg}" alt="Sanitization Logo" class="relative z-10 w-9 h-9 object-cover rounded-lg ring-2 ring-white/70">
+                            </div>
+
+                            <!-- Brand Text -->
+                            <div class="leading-tight">
+                                <span class="block text-base font-extrabold tracking-tight text-white">SANITIZATION</span>
+                                <span class="block text-[9px] font-semibold tracking-[0.2em] text-blue-400">MANAGEMENT SYSTEM</span>
+                            </div>
+                        </a>
+
+                        <!-- Description -->
+                        <p class="mt-6 max-w-sm text-sm leading-relaxed text-gray-400">
+                            Professional sanitization solutions for homes,
+                            offices and vehicles. Request a service easily
+                            and keep your surroundings clean, safe and hygienic.
+                        </p>
+
+                        <!-- Trust Badge -->
+                        <div class="mt-6 inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white/5 border border-white/10">
+                            <i class="fa-solid fa-shield-halved text-blue-400"></i>
+                            <span class="text-xs font-medium text-gray-300">Safe & Hygienic Services</span>
+                        </div>
+                    </div>
+
+                    <!-- ================= QUICK LINKS ================= -->
+                    <div>
+                        <h3 class="text-sm font-bold uppercase tracking-wider text-white">Quick Links</h3>
+                        <div class="w-8 h-0.5 mt-3 bg-blue-500 rounded-full"></div>
+                        <ul class="mt-5 space-y-3">
+                            <li>
+                                <a th:href="@{/home}" class="footer-link">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                    Home
+                                </a>
+                            </li>
+                            <li>
+                                <a th:href="@{/about}" class="footer-link">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                    About Us
+                                </a>
+                            </li>
+                            <li>
+                                <a th:href="@{/services}" class="footer-link">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                    Services
+                                </a>
+                            </li>
+                            <li>
+                                <a th:href="@{/contact}" class="footer-link">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                    Contact Us
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- ================= SERVICES ================= -->
+                    <div>
+                        <h3 class="text-sm font-bold uppercase tracking-wider text-white">Our Services</h3>
+                        <div class="w-8 h-0.5 mt-3 bg-blue-500 rounded-full"></div>
+                        <ul class="mt-5 space-y-3">
+                            <li>
+                                <a th:href="@{/services}" class="footer-link">
+                                    <i class="fa-solid fa-spray-can-sparkles"></i>
+                                    Home Sanitization
+                                </a>
+                            </li>
+                            <li>
+                                <a th:href="@{/services}" class="footer-link">
+                                    <i class="fa-solid fa-car"></i>
+                                    Vehicle Sanitization
+                                </a>
+                            </li>
+                            <li>
+                                <a th:href="@{/services}" class="footer-link">
+                                    <i class="fa-solid fa-building"></i>
+                                    Office Sanitization
+                                </a>
+                            </li>
+                            <li>
+                                <a th:href="@{/track-request}" class="footer-link">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    Track Request
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+            <!-- ================= CONTACT ================= -->
+            <div>
+                <h3 class="text-sm font-bold uppercase tracking-wider text-white">Get In Touch</h3>
+                <div class="w-8 h-0.5 mt-3 bg-blue-500 rounded-full"></div>
+                <div class="mt-5 space-y-4">
+                    <!-- Email -->
+                    <div class="flex items-start gap-3">
+                        <div class="shrink-0 w-9 h-9 rounded-lg bg-blue-500/1 border border-blue-500/20 flex items-center justify-center">
+                            <i class="fa-solid fa-envelope text-blue-400"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500">Email</p>
+                            <a href="mailto:info@sanitization.com" class="text-sm text-gray-300 hover:text-blue-400 transition">
+                                info@sanitization.com
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Phone -->
+                    <div class="flex items-start gap-3">
+                        <div class="shrink-0 w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
+                            <i class="fa-solid fa-phone text-blue-400"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500">Phone</p>
+                            <a href="tel:+910000000000" class="text-sm text-gray-300 hover:text-blue-400 transition">+91 00000 00000</a>
+                        </div>
+                    </div>
+                    <!-- Support -->
+                    <div class="flex items-start gap-3">
+                        <div class="shrink-0 w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
+                            <i class="fa-solid fa-headset text-blue-400"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500">Support</p>
+                            <p class="text-sm text-gray-300">24/7 Request Tracking</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= FOOTER DIVIDER ================= -->
+        <div class="my-10 h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent"></div>
+        <!-- ================= BOTTOM BAR ================= -->
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-xs sm:text-sm text-gray-500 text-center md:text-left">© 2026
+                <span class="text-gray-300 font-medium">Sanitization Management System</span>.
+                All rights reserved.
+            </p>
+
+            <!-- Bottom Links -->
+            <div class="flex items-center gap-5">
+                <a href="#" class="text-xs sm:text-sm text-gray-500 hover:text-blue-400 transition">
+                    Privacy Policy
+                </a>
+                <span class="w-1 h-1 rounded-full bg-gray-700"></span>
+                <a href="#" class="text-xs sm:text-sm text-gray-500 hover:text-blue-400 transition">Terms & Conditions</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- flow bite content -->
+<script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script th:src="@{/js/script.js}"></script>
+<th:block th:replace="${script}"></th:block>
+</body>
+</html>

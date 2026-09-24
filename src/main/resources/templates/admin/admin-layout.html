@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:fragment="adminLayout(content,title)">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- ================= THEME ================= -->
+        <script>
+            (function () {
+                const savedTheme = localStorage.getItem("theme");
+                if (savedTheme === "dark") {
+                    document.documentElement.classList.add("dark");
+                } else {
+                    document.documentElement.classList.remove("dark");
+                }
+            })();
+        </script>
+        <title th:replace="${title}">Admin - Sanitization Management System</title>
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        <!-- Tailwind -->
+        <link rel="stylesheet" th:href="@{/css/output.css}">
+        <!-- Custom CSS -->
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+    </head>
+    <body class="min-h-screen bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+
+        <!-- ===================== ADMIN TOPBAR ====================== -->
+        <header class="fixed top-0 left-0 right-0 h-16 z-50 bg-white border-b border-gray-200 shadow-sm dark:bg-gray-900 dark:border-gray-700">
+            <div class="max-w-screen-2xl h-full mx-auto px-4 flex items-center justify-between">
+                <!-- ================= MOBILE MENU BUTTON ================= -->
+                <button id="admin-menu-button" type="button" aria-label="Open admin menu" aria-controls="admin-sidebar" aria-expanded="false"
+                        class="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800 focus:outline-none">
+                    <i id="admin-menu-icon" class="fa-solid fa-bars text-lg"></i>
+                </button>
+                <!-- ================= PREMIUM BRAND ================= -->
+                <a th:href="@{/admin}" class="group flex items-center gap-3 shrink-0">
+                <!-- Logo Container -->
+                <div class="relative flex items-center justify-center w-10 h-10 md:w-11 md:h-11rounded-xl bg-gradient-to-br from-blue-600
+                        via-blue-500 to-cyan-400 shadow-lg shadow-blue-500/25 ring-1 ring-blue-400/20 overflow-hidden transition-all
+                        duration-300 group-hover:scale-105 group-hover:shadow-blue-500/40">
+                    <!-- Shine -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-white/25 via-transparent to-transparent"></div>
+                    <!-- Logo -->
+                    <img th:src="@{/images/logo_01.jpg}" alt="Sanitization Logo"
+                     class="relative z-10 w-8 h-8 md:w-9 md:h-9 object-cover rounded-lg ring-2 ring-white/70 shadow-md">
+                </div>
+                <!-- ================= BRAND TEXT ================= -->
+                <div class="leading-tight">
+                    <!-- Mobile Brand -->
+                    <div class="lg:hidden">
+                        <span class="block text-base font-extrabold tracking-wide text-gray-900 dark:text-white">SANITIZATION</span>
+                        <span class="block text-[9px] font-semibold tracking-[0.18em] text-blue-600 dark:text-blue-400">MANAGEMENT SYSTEM</span>
+                    </div>
+
+                    <!-- Desktop Brand -->
+                    <div class="hidden lg:block">
+                        <span class="block text-base lg:text-lg font-extrabold tracking-tight text-gray-900 dark:text-white">SANITIZATION</span>
+                        <span class="block text-[10px] lg:text-[11px] font-semibold tracking-[0.22em] text-blue-600 dark:text-blue-400">MANAGEMENT SYSTEM</span>
+                    </div>
+                </div>
+            </a>
+            <!-- ================= RIGHT SIDE ================= -->
+            <div class="flex items-center gap-2">
+                <!-- Theme Button -->
+                <button id="theme_change_button" type="button" aria-label="Change theme"
+                    class="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-800
+                           dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 text-sm font-medium transition">
+                    <i class="fa-solid fa-circle-half-stroke"></i>
+                    <span class="hidden sm:inline">Theme</span>
+                </button>
+            </div>
+        </div>
+    </header>
+        <!-- ======================= SIDEBAR ========================= -->
+        <div th:replace="~{admin/sidebar :: adminSidebar}"></div>
+        <!-- ================= MOBILE OVERLAY ================= -->
+        <div id="admin-overlay" class="hidden fixed inset-0 z-30 bg-black/50 lg:hidden"></div>
+        <!-- ===================== MAIN CONTENT ====================== -->
+        <main class="lg:ml-64 pt-16 min-h-screen">
+            <div th:replace="${content}"></div>
+        </main>
+        <!-- ======================== SCRIPTS ======================== -->
+        <!-- Flowbite -->
+        <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+        <!-- SweetAlert -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <!-- Main JS -->
+        <script th:src="@{/js/script.js}"></script>
+    </body>
+</html>
