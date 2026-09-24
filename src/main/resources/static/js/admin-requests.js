@@ -228,25 +228,29 @@ document.addEventListener("DOMContentLoaded", () => {
                         </span>
                     </td>
 
-                    <!-- CUSTOMER -->
-                    <td class="px-5 py-4">
-                        <div class="font-medium text-gray-900 dark:text-white">
-                            ${escapeHtml(customerName)}
-                        </div>
-                        <div class="text-xs text-gray-500 dark:text-gray-400">
-                            ${escapeHtml(phone)}
-                        </div>
-                    </td>
-
-                    <!-- SERVICE -->
-                    <td class="px-5 py-4">
-                        <div class="text-gray-800 dark:text-gray-200">
-                            ${escapeHtml(serviceName)}
-                        </div>
-                        <div class="text-xs text-gray-500 dark:text-gray-400">
-                            ${formatCurrency(servicePrice, "INR")}
-                        </div>
-                    </td>
+                        <!-- CUSTOMER -->
+                        <td class="px-5 py-4">
+                            <div class="font-medium text-gray-900 dark:text-white">
+                                ${escapeHtml(customerName)}
+                            </div>
+                        </td>
+                        
+                        <!-- MOBILE -->
+                        <td class="px-5 py-4">
+                            <div class="text-gray-700 dark:text-gray-300">
+                                ${escapeHtml(phone)}
+                            </div>
+                        </td>
+                        
+                        <!-- SERVICE -->
+                        <td class="px-5 py-4">
+                            <div class="text-gray-800 dark:text-gray-200">
+                                ${escapeHtml(serviceName)}
+                            </div>
+                            <div class="text-xs text-gray-500 dark:text-gray-400">
+                                ${formatCurrency(servicePrice, "INR")}
+                            </div>
+                        </td>
 
                     <!-- DATE -->
                     <td class="px-5 py-4 text-gray-700 dark:text-gray-300">
@@ -264,24 +268,30 @@ document.addEventListener("DOMContentLoaded", () => {
                     </td>
 
                     <!-- ACTION -->
-                    <td class="px-5 py-4">
-                        <div class="flex items-center justify-center gap-2">
-                            <!-- VIEW -->
-                            <button type="button"
-                                class="view-request-btn w-9 h-9 inline-flex items-center justify-center rounded-lg bg-blue-100
-                                       text-blue-600 hover:bg-blue-200 dark:bg-blue-900/30 dark:text-blue-400 transition"
-                                     data-id="${request.id}" title="View Full Details">
-                                <i class="fa-solid fa-eye"></i>
-                            </button>
-
-                            <!-- DELETE -->
-                            <button type="button" class="delete-request-btn w-9 h-9 inline-flex items-center justify-center
-                                       rounded-lg bg-red-100 text-red-600 hover:bg-red-200 dark:bg-red-900/30 dark:text-red-400 transition"
-                                data-id="${request.id}" title="Delete Request">
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                        </div>
-                    </td>
+                    <td class="px-5 py-4 text-center w-32 min-w-[8rem]">
+                       <div class="flex items-center justify-center gap-2">
+                        <!-- VIEW -->
+                        <button type="button"
+                            class="view-request-btn w-9 h-9 inline-flex items-center justify-center rounded-lg
+                                   bg-blue-100 text-blue-600 hover:bg-blue-200
+                                   dark:bg-blue-900/30 dark:text-blue-400 transition"
+                            data-id="${request.id}"
+                            title="View Full Details">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                
+                        <!-- DELETE -->
+                        <button type="button"
+                            class="delete-request-btn w-9 h-9 inline-flex items-center justify-center rounded-lg
+                                   bg-red-100 text-red-600 hover:bg-red-200
+                                   dark:bg-red-900/30 dark:text-red-400 transition"
+                            data-id="${request.id}"
+                            title="Delete Request">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                
+                    </div>
+                </td>
                 `;
                 requestsTableBody.appendChild(row);
             }
